@@ -1,8 +1,10 @@
 :root {
+    --button-primary-color-custom: var(--mdx-comp-button-primary-medium-color-default);
     --button-primary-background-color-hover-custom: var(--mdx-comp-button-primary-medium-background-color-hover);
+    /*
+    
     --button-primary-background-color-custom: var(--mdx-comp-button-primary-medium-background-color-default);
     --button-primary-border-radius-custom: var(--mdx-comp-button-primary-medium-border-radius-default);
-    --button-primary-color-custom: var(--mdx-comp-button-primary-medium-foreground-color-default);
     --button-primary-color-hover-custom: var(--mdx-comp-button-primary-medium-foreground-color-hover);
     --button-primary-font-custom: var(--mdx-comp-button-primary-medium-font-default);
   
@@ -18,4 +20,5 @@
     --button-secondary-color: var(--mdx-comp-button-secondary-medium-foreground-color-default);
     --button-secondary-font-custom: var(--mdx-comp-button-secondary-medium-font-default);
     --button-secondary-font-family: var(--mdx-comp-button-secondary-medium-font-default);
+    */
 }

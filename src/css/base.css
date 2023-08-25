@@ -1,0 +1,166 @@
+@import "../../node_modules/@migros/mdx-design-tokens/dist/01_base/border-rem.css";
+@import "../../node_modules/@migros/mdx-design-tokens/dist/01_base/color-rem.css";
+@import "../../node_modules/@migros/mdx-design-tokens/dist/01_base/font-rem.css";
+@import "../../node_modules/@migros/mdx-design-tokens/dist/01_base/motion-rem.css";
+@import "../../node_modules/@migros/mdx-design-tokens/dist/01_base/opacity-rem.css";
+@import "../../node_modules/@migros/mdx-design-tokens/dist/01_base/shadows-rem.css";
+@import "../../node_modules/@migros/mdx-design-tokens/dist/01_base/spacing-rem.css";
+
+/* border-rem */
+:root {
+    --border-width: var(--mdx-base-border-width-md);
+    --border-radius: var(--mdx-base-border-radius-md);
+}
+
+/* color-rem.css */
+:root {
+    --m-fully-transparent: var(--mdx-base-color-fully-transparent);
+    --m-impuls-green-700: var(--mdx-base-color-impuls-green-700);
+    --m-impuls-green-600: var(--mdx-base-color-impuls-green-600);
+    --m-engagement-red-800: var(--mdx-base-color-engagement-red-800);
+    --m-engagement-red-700: var(--mdx-base-color-engagement-red-700);
+    --m-cumulus-blue-900: var(--mdx-base-color-cumulus-blue-900);
+    --m-cumulus-blue-800: var(--mdx-base-color-cumulus-blue-800);
+    --m-cumulus-blue-300: var(--mdx-base-color-cumulus-blue-300);
+    --m-cumulus-blue-200: var(--mdx-base-color-cumulus-blue-200);
+    --m-doitgarden-green-900: var(--mdx-base-color-doitgarden-green-900);
+    --m-doitgarden-green-800: var(--mdx-base-color-doitgarden-green-800);
+    --m-doitgarden-green-100: var(--mdx-base-color-doitgarden-green-100);
+    --m-bike-world-900: var(--mdx-base-color-bike-world-900);
+    --m-bike-world-800: var(--mdx-base-color-bike-world-800);
+    --m-bike-world-700: var(--mdx-base-color-bike-world-700);
+    --m-bike-world-600: var(--mdx-base-color-bike-world-600);
+    --m-bike-world-400: var(--mdx-base-color-bike-world-400);
+    --m-bike-world-300: var(--mdx-base-color-bike-world-300);
+    --m-bike-world-200: var(--mdx-base-color-bike-world-200);
+    --m-bike-world-100: var(--mdx-base-color-bike-world-100);
+    --m-sportx-red-900: var(--mdx-base-color-sportx-red-900);
+    --m-sportx-red-800: var(--mdx-base-color-sportx-red-800);
+    --m-sportx-red-700: var(--mdx-base-color-sportx-red-700);
+    --m-sportx-red-200: var(--mdx-base-color-sportx-red-200);
+    --m-melectronics-blue-900: var(--mdx-base-color-melectronics-blue-900);
+    --m-melectronics-blue-800: var(--mdx-base-color-melectronics-blue-800);
+    --m-melectronics-blue-100: var(--mdx-base-color-melectronics-blue-100);
+    --m-micasa-green-900: var(--mdx-base-color-micasa-green-900);
+    --m-micasa-green-800: var(--mdx-base-color-micasa-green-800);
+    --m-micasa-green-100: var(--mdx-base-color-micasa-green-100);
+    --m-micasa-orange-500: var(--mdx-base-color-micasa-orange-500);
+    --m-micasa-orange-400: var(--mdx-base-color-micasa-orange-400);
+    --m-micasa-orange-100: var(--mdx-base-color-micasa-orange-100);
+    --m-apple-green-opacity-600-75: var(--mdx-base-color-apple-green-opacity-600-75);
+    --m-apple-green-opacity-600-50: var(--mdx-base-color-apple-green-opacity-600-50);
+    --m-apple-green-opacity-600-25: var(--mdx-base-color-apple-green-opacity-600-25);
+    --m-apple-green-900: var(--mdx-base-color-apple-green-900);
+    --m-apple-green-800: var(--mdx-base-color-apple-green-800);
+    --m-apple-green-700: var(--mdx-base-color-apple-green-700);
+    --m-apple-green-600: var(--mdx-base-color-apple-green-600);
+    --m-apple-green-500: var(--mdx-base-color-apple-green-500);
+    --m-apple-green-400: var(--mdx-base-color-apple-green-400);
+    --m-apple-green-300: var(--mdx-base-color-apple-green-300);
+    --m-apple-green-200: var(--mdx-base-color-apple-green-200);
+    --m-apple-green-100: var(--mdx-base-color-apple-green-100);
+    --m-ferrari-red-opacity-600-75: var(--mdx-base-color-ferrari-red-opacity-600-75);
+    --m-ferrari-red-opacity-600-50: var(--mdx-base-color-ferrari-red-opacity-600-50);
+    --m-ferrari-red-opacity-600-25: var(--mdx-base-color-ferrari-red-opacity-600-25);
+    --m-ferrari-red-900: var(--mdx-base-color-ferrari-red-900);
+    --m-ferrari-red-800: var(--mdx-base-color-ferrari-red-800);
+    --m-ferrari-red-700: var(--mdx-base-color-ferrari-red-700);
+    --m-ferrari-red-600: var(--mdx-base-color-ferrari-red-600);
+    --m-ferrari-red-500: var(--mdx-base-color-ferrari-red-500);
+    --m-ferrari-red-400: var(--mdx-base-color-ferrari-red-400);
+    --m-ferrari-red-300: var(--mdx-base-color-ferrari-red-300);
+    --m-ferrari-red-200: var(--mdx-base-color-ferrari-red-200);
+    --m-ferrari-red-100: var(--mdx-base-color-ferrari-red-100);
+    --m-vivid-cerulean-opacity-600-75: var(--mdx-base-color-vivid-cerulean-opacity-600-75);
+    --m-vivid-cerulean-opacity-600-50: var(--mdx-base-color-vivid-cerulean-opacity-600-50);
+    --m-vivid-cerulean-opacity-600-25: var(--mdx-base-color-vivid-cerulean-opacity-600-25);
+    --m-vivid-cerulean-900: var(--mdx-base-color-vivid-cerulean-900);
+    --m-vivid-cerulean-800: var(--mdx-base-color-vivid-cerulean-800);
+    --m-vivid-cerulean-700: var(--mdx-base-color-vivid-cerulean-700);
+    --m-vivid-cerulean-600: var(--mdx-base-color-vivid-cerulean-600);
+    --m-vivid-cerulean-500: var(--mdx-base-color-vivid-cerulean-500);
+    --m-vivid-cerulean-400: var(--mdx-base-color-vivid-cerulean-400);
+    --m-vivid-cerulean-300: var(--mdx-base-color-vivid-cerulean-300);
+    --m-vivid-cerulean-200: var(--mdx-base-color-vivid-cerulean-200);
+    --m-vivid-cerulean-100: var(--mdx-base-color-vivid-cerulean-100);
+    --m-harvest-gold-opacity-600-75: var(--mdx-base-color-harvest-gold-opacity-600-75);
+    --m-harvest-gold-opacity-600-50: var(--mdx-base-color-harvest-gold-opacity-600-50);
+    --m-harvest-gold-opacity-600-25: var(--mdx-base-color-harvest-gold-opacity-600-25);
+    --m-harvest-gold-900: var(--mdx-base-color-harvest-gold-900);
+    --m-harvest-gold-800: var(--mdx-base-color-harvest-gold-800);
+    --m-harvest-gold-700: var(--mdx-base-color-harvest-gold-700);
+    --m-harvest-gold-600: var(--mdx-base-color-harvest-gold-600);
+    --m-harvest-gold-500: var(--mdx-base-color-harvest-gold-500);
+    --m-harvest-gold-400: var(--mdx-base-color-harvest-gold-400);
+    --m-harvest-gold-300: var(--mdx-base-color-harvest-gold-300);
+    --m-harvest-gold-200: var(--mdx-base-color-harvest-gold-200);
+    --m-harvest-gold-100: var(--mdx-base-color-harvest-gold-100);
+    --m-electric-purple-900: var(--mdx-base-color-electric-purple-900);
+    --m-electric-purple-800: var(--mdx-base-color-electric-purple-800);
+    --m-electric-purple-700: var(--mdx-base-color-electric-purple-700);
+    --m-electric-purple-600: var(--mdx-base-color-electric-purple-600);
+    --m-electric-purple-500: var(--mdx-base-color-electric-purple-500);
+    --m-electric-purple-400: var(--mdx-base-color-electric-purple-400);
+    --m-electric-purple-300: var(--mdx-base-color-electric-purple-300);
+    --m-electric-purple-200: var(--mdx-base-color-electric-purple-200);
+    --m-orange-opacity-600-75: var(--mdx-base-color-orange-opacity-600-75);
+    --m-orange-opacity-600-50: var(--mdx-base-color-orange-opacity-600-50);
+    --m-orange-opacity-600-25: var(--mdx-base-color-orange-opacity-600-25);
+    --m-orange-900: var(--mdx-base-color-orange-900);
+    --m-orange-800: var(--mdx-base-color-orange-800);
+    --m-orange-750: var(--mdx-base-color-orange-750);
+    --m-orange-700: var(--mdx-base-color-orange-700);
+    --m-orange-650: var(--mdx-base-color-orange-650);
+    --m-orange-600: var(--mdx-base-color-orange-600);
+    --m-orange-500: var(--mdx-base-color-orange-500);
+    --m-orange-400: var(--mdx-base-color-orange-400);
+    --m-orange-300: var(--mdx-base-color-orange-300);
+    --m-orange-200: var(--mdx-base-color-orange-200);
+    --m-orange-100: var(--mdx-base-color-orange-100);
+    --m-grey-opacity-web: var(--mdx-base-color-grey-opacity-web);
+    --m-grey-opacity-950-75: var(--mdx-base-color-grey-opacity-950-75);
+    --m-grey-opacity-950-50: var(--mdx-base-color-grey-opacity-950-50);
+    --m-grey-opacity-950-25: var(--mdx-base-color-grey-opacity-950-25);
+    --m-grey-1000: var(--mdx-base-color-grey-1000);
+    --m-grey-975: var(--mdx-base-color-grey-975);
+    --m-grey-950: var(--mdx-base-color-grey-950);
+    --m-grey-900: var(--mdx-base-color-grey-900);
+    --m-grey-800: var(--mdx-base-color-grey-800);
+    --m-grey-700: var(--mdx-base-color-grey-700);
+    --m-grey-600: var(--mdx-base-color-grey-600);
+    --m-grey-500: var(--mdx-base-color-grey-500);
+    --m-grey-400: var(--mdx-base-color-grey-400);
+    --m-grey-300: var(--mdx-base-color-grey-300);
+    --m-grey-200: var(--mdx-base-color-grey-200);
+    --m-grey-100: var(--mdx-base-color-grey-100);
+    --m-grey-0: var(--mdx-base-color-grey-0);
+}
+
+/* font-rem.css */
+:root {
+    --font-weight-strong: var(--mdx-base-font-weight-bold);
+    --font-weight: var(--mdx-base-font-weight-regular);
+    --font-family: var(--mdx-base-font-family-text);
+    --line-height: var(--mdx-base-font-line-height-300);
+}
+
+/* motion-rem.css */
+:root {
+    --transition: all var(--mdx-base-motion-time-300) var(--mdx-base-motion-easing-ease-in-out-medium);
+}
+
+/* opacity-rem.css */
+:root {
+    --opacity: var(--mdx-base-opacity-1);
+}
+
+/* shadows-rem.css */
+:root {
+    --box-shadow: var(--mdx-base-shadow-medium);
+}
+
+/* spacing-rem.css */
+:root {
+    --content-spacing-mobile: var(--mdx-base-spacing-unit-2x);
+    --content-spacing: var(--mdx-base-spacing-unit-2-5x);
+}

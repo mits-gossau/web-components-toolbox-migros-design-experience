@@ -1,19 +1,27 @@
 :root {
-    /*
-    --background-color: var(--mdx-base-color-global-white);
+    /* ordered according to src/css/base.css */
+    /* border */
+    --border-width: var(--mdx-sys-border-width-md);
+    --border-radius: var(--mdx-sys-border-radius-md);
+    /* color */
+    --background-color: var(--mdx-sys-color-neutral-on-default);
     --color-active: var(--color-hover);
-    --color-disabled: var(--mdx-base-color-orange-300);
-    --color-hover: var(--mdx-base-color-orange-800);
-    --color-secondary: var(--mdx-base-color-orange-600);
-    --color: var(--mdx-base-color-global-black);
-    --content-spacing-mobile: var(--mdx-base-spacing-unit-2x);
-    --content-spacing: var(--mdx-base-spacing-unit-2-5x);
-    --font-family-bold: HelveticaNowTextBold, var(--mdx-base-font-family-text), Helvetica, Arial, sans-serif;
-    --font-family-secondary: Avenir35Light, sans-serif;
-    --font-family: var(--mdx-base-font-family-text), Helvetica, Arial, sans-serif;
-    --font-size-mobile: var(--mdx-base-font-font-size-175);
-    --font-size: var(--mdx-base-font-font-size-200);
-    --font-weight: var(--mdx-base-font-weight-regular);
-    --line-height: var(--mdx-base-font-line-height-300);
-    */
+    --color-disabled: var(--mdx-sys-color-error-subtle3);
+    --color-error: var(--mdx-sys-color-error-default);
+    --color-hover: var(--mdx-sys-color-primary-bold3);
+    --color-secondary: var(--mdx-sys-color-primary-default);
+    --color: var(--mdx-sys-color-neutral-default);
+    /* font */
+    --font-weight-strong: var(--mdx-sys-font-fix-body1-font-weight-bold, var(--mdx-base-font-weight-bold));
+    --font-weight: var(--mdx-sys-font-fix-body1-font-weight);
+    --font-family: var(--mdx-sys-font-fix-body1-font-family);
+    --line-height: var(--mdx-sys-font-fix-body1-line-height);
+    --font-size-mobile: min(var(--mdx-sys-font-fix-body2-font-size), 5vw);
+    --font-size: max(var(--mdx-sys-font-fix-body1-font-size), 0.8vw);
+    /* opacity used of base.css */
+    /* motion */
+    --transition: all var(--mdx-sys-motion-time-medium) var(--mdx-sys-motion-easing-ease-in-out);
+    /* shadows */
+    --box-shadow: var(--mdx-sys-shadow-default);
+    /* spacing used of base.css */
 }
