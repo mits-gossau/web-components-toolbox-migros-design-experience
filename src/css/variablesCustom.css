@@ -5,6 +5,14 @@
   * - if a component holds other components you should share the attribute namespace with its children
   */
 
-:root {
+/** 
+  * only import one theme at a time
+  */
+  @import "../../node_modules/@migros/mdx-design-tokens/dist/corporate/light-rem.css";
+  /*
+  @import "../../node_modules/@migros/mdx-design-tokens/dist/m/light-rem.css";
+  @import "../../node_modules/@migros/mdx-design-tokens/dist/showcase/light-rem.css";
+  */
   
-}
+  @import "./sys.css";
+  @import "./comp.css";
