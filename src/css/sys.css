@@ -24,4 +24,29 @@
     /* shadows */
     --box-shadow: var(--mdx-sys-shadow-default);
     /* spacing used of base.css */
+    /* headlines */
+    --h1-font-family: var(--mdx-sys-font-flex-mobile-headline1-font-family);
+    --h1-font-weight: var(--mdx-sys-font-flex-mobile-headline1-font-weight);
+    --h1-line-height: var(--mdx-sys-font-flex-mobile-headline1-line-height);
+    --h1-font-size: var(--mdx-sys-font-flex-mobile-headline1-font-size);
+    --h1-letter-spacing: var(--mdx-sys-font-flex-mobile-headline1-letter-spacing);
+    --h1-padding: var(--mdx-sys-font-flex-mobile-headline1-paragraph-spacing);
+    --h1-text-transform: var(--mdx-sys-font-flex-mobile-headline1-text-case);
+    --h1-text-decoration: var(--mdx-sys-font-flex-mobile-headline1-text-decoration);
+    --h2-font-family: var(--mdx-sys-font-flex-mobile-headline2-font-family);
+    --h2-font-weight: var(--mdx-sys-font-flex-mobile-headline2-font-weight);
+    --h2-line-height: var(--mdx-sys-font-flex-mobile-headline2-line-height);
+    --h2-font-size: var(--mdx-sys-font-flex-mobile-headline2-font-size);
+    --h2-letter-spacing: var(--mdx-sys-font-flex-mobile-headline2-letter-spacing);
+    --h2-padding: var(--mdx-sys-font-flex-mobile-headline2-paragraph-spacing);
+    --h2-text-transform: var(--mdx-sys-font-flex-mobile-headline2-text-case);
+    --h2-text-decoration: var(--mdx-sys-font-flex-mobile-headline2-text-decoration);
+    --h3-font-family: var(--mdx-sys-font-flex-mobile-headline3-font-family);
+    --h3-font-weight: var(--mdx-sys-font-flex-mobile-headline3-font-weight);
+    --h3-line-height: var(--mdx-sys-font-flex-mobile-headline3-line-height);
+    --h3-font-size: var(--mdx-sys-font-flex-mobile-headline3-font-size);
+    --h3-letter-spacing: var(--mdx-sys-font-flex-mobile-headline3-letter-spacing);
+    --h3-padding: var(--mdx-sys-font-flex-mobile-headline3-paragraph-spacing);
+    --h3-text-transform: var(--mdx-sys-font-flex-mobile-headline3-text-case);
+    --h3-text-decoration: var(--mdx-sys-font-flex-mobile-headline3-text-decoration);
 }

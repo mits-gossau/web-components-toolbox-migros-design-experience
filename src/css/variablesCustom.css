@@ -13,9 +13,8 @@
 /** 
  * only import one mdx theme at a time for mapping it at sys.css and comp.css
  */
-@import "../../node_modules/@migros/mdx-design-tokens/dist/m/light-px.css";
-/*
 @import "../../node_modules/@migros/mdx-design-tokens/dist/m/light-rem.css";
+/*
 @import "../../node_modules/@migros/mdx-design-tokens/dist/showcase/light-rem.css";
 */
 @import "./sys.css";
