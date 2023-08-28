@@ -9,3 +9,4 @@ TODO
 - [ ] mdx files include
 - [ ] mdx token mapping
 - [ ] mdx wc syncing
+- [ ] remove this.removeAttribute('tabindex') from components if they have default indexed children
