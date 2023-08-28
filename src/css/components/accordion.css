@@ -1,0 +1,8 @@
+:root {
+    /*
+    add two namespaced themes for white and gray at Details.js level
+    --details-default-border-color-custom
+    --details-default-border-bottom
+    --details-default-border-radius: var(--mdx-comp-accordion-border-radius-default);
+    */
+}
