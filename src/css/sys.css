@@ -2,7 +2,7 @@
     /* ordered according to src/css/base.css */
     /* border */
     --border-width: var(--mdx-sys-border-width-md);
-    --border-radius: var(--mdx-sys-border-radius-md);
+    --border-radius: var(--mdx-sys-border-radius-none);
     /* color */
     --background-color: var(--mdx-sys-color-neutral-on-default);
     --color-active: var(--color-hover);
