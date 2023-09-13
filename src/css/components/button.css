@@ -12,8 +12,8 @@
     --button-primary-font-family-custom: var(--mdx-comp-button-primary-medium-font-default-font-family);
     --button-primary-font-size: var(--mdx-comp-button-primary-medium-font-default-font-size);
     --button-primary-font-weight: var(--mdx-comp-button-primary-medium-font-default-font-weight);
-    --button-primary-icon-left-margin: var(--mdx-comp-button-primary-medium-gap-icon-text-default);
-    --button-primary-icon-right-margin: var(--mdx-comp-button-primary-medium-gap-icon-text-default);
+    --button-primary-icon-left-margin: 0 var(--mdx-comp-button-primary-medium-gap-icon-text-default) 0 0;
+    --button-primary-icon-right-margin: 0 0 0 var(--mdx-comp-button-primary-medium-gap-icon-text-default);
     --button-primary-outline-color: var(--mdx-comp-keyboard-focus-color-default);
     --button-primary-outline-width: var(--mdx-comp-keyboard-focus-border-width-default);
     --button-primary-padding-custom: var(--mdx-comp-button-primary-medium-padding-vertical-default) var(--mdx-comp-button-primary-medium-padding-horizontal-default);
