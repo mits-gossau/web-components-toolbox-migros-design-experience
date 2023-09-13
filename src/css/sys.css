@@ -3,6 +3,8 @@
     /* border */
     --border-width: var(--mdx-sys-border-width-md);
     --border-radius: var(--mdx-sys-border-radius-none);
+    --search-input-border-radius: var(--mdx-comp-button-primary-medium-border-radius-default);
+    --search-input-border-radius-mobile: var(--mdx-comp-button-primary-small-border-radius-default);
     /* color */
     --background-color: var(--mdx-sys-color-neutral-on-default);
     --color-active: var(--color-hover);
