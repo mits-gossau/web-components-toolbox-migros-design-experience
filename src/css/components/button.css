@@ -4,7 +4,6 @@
     --button-primary-background-color-hover-custom: var(--mdx-comp-button-primary-medium-background-color-hover);
     --button-primary-border-color-custom: var(--mdx-comp-button-primary-medium-border-color-default);
     --button-primary-border-radius: var(--mdx-comp-button-primary-medium-border-radius-default);
-    --button-primary-border-radius: var(--mdx-comp-keyboard-focus-border-radius-default);
     --button-primary-border-width-custom: var(--mdx-comp-button-primary-medium-border-width-default);
     --button-primary-color-custom: var(--mdx-comp-button-primary-medium-color-default);
     --button-primary-color-disabled-custom: var(--mdx-comp-button-primary-medium-color-disabled);
@@ -14,6 +13,7 @@
     --button-primary-font-weight: var(--mdx-comp-button-primary-medium-font-default-font-weight);
     --button-primary-icon-left-margin: 0 var(--mdx-comp-button-primary-medium-gap-icon-text-default) 0 0;
     --button-primary-icon-right-margin: 0 0 0 var(--mdx-comp-button-primary-medium-gap-icon-text-default);
+    --button-primary-outline-border-radius: var(--mdx-comp-keyboard-focus-border-radius-default);
     --button-primary-outline-color: var(--mdx-comp-keyboard-focus-color-default);
     --button-primary-outline-width: var(--mdx-comp-keyboard-focus-border-width-default);
     --button-primary-padding-custom: var(--mdx-comp-button-primary-medium-padding-vertical-default) var(--mdx-comp-button-primary-medium-padding-horizontal-default);
@@ -23,7 +23,6 @@
     --button-quaternary-background-color-hover-custom: var(--mdx-comp-button-quaternary-medium-background-color-hover);
     --button-quaternary-border-color-custom: var(--mdx-comp-button-quaternary-medium-border-color-default);
     --button-quaternary-border-radius: var(--mdx-comp-button-quaternary-medium-border-radius-default);
-    --button-quaternary-border-radius: var(--mdx-comp-keyboard-focus-border-radius-default);
     --button-quaternary-border-width-custom: var(--mdx-comp-button-quaternary-medium-border-width-default);
     --button-quaternary-color-custom: var(--mdx-comp-button-quaternary-medium-color-default);
     --button-quaternary-color-disabled-custom: var(--mdx-comp-button-quaternary-medium-color-disabled);
@@ -33,6 +32,7 @@
     --button-quaternary-font-weight: var(--mdx-comp-button-quaternary-medium-font-default-font-weight);
     --button-quaternary-icon-left-margin: var(--mdx-comp-button-quaternary-medium-gap-icon-text-default);
     --button-quaternary-icon-right-margin: var(--mdx-comp-button-quaternary-medium-gap-icon-text-default);
+    --button-quaternary-outline-border-radius: var(--mdx-comp-keyboard-focus-border-radius-default);
     --button-quaternary-outline-color: var(--mdx-comp-keyboard-focus-color-default);
     --button-quaternary-outline-width: var(--mdx-comp-keyboard-focus-border-width-default);
     --button-quaternary-padding-custom: var(--mdx-comp-button-quaternary-medium-padding-vertical-default) var(--mdx-comp-button-quaternary-medium-padding-horizontal-default);
@@ -42,7 +42,6 @@
     --button-secondary-background-color-hover-custom: var(--mdx-comp-button-secondary-medium-background-color-hover);
     --button-secondary-border-color-custom: var(--mdx-comp-button-secondary-medium-border-color-default);
     --button-secondary-border-radius: var(--mdx-comp-button-secondary-medium-border-radius-default);
-    --button-secondary-border-radius: var(--mdx-comp-keyboard-focus-border-radius-default);
     --button-secondary-border-width-custom: var(--mdx-comp-button-secondary-medium-border-width-default);
     --button-secondary-color-custom: var(--mdx-comp-button-secondary-medium-color-default);
     --button-secondary-color-disabled-custom: var(--mdx-comp-button-secondary-medium-color-disabled);
@@ -52,6 +51,7 @@
     --button-secondary-font-weight: var(--mdx-comp-button-secondary-medium-font-default-font-weight);
     --button-secondary-icon-left-margin: var(--mdx-comp-button-secondary-medium-gap-icon-text-default);
     --button-secondary-icon-right-margin: var(--mdx-comp-button-secondary-medium-gap-icon-text-default);
+    --button-secondary-outline-border-radius: var(--mdx-comp-keyboard-focus-border-radius-default);
     --button-secondary-outline-color: var(--mdx-comp-keyboard-focus-color-default);
     --button-secondary-outline-width: var(--mdx-comp-keyboard-focus-border-width-default);
     --button-secondary-padding-custom: var(--mdx-comp-button-secondary-medium-padding-vertical-default) var(--mdx-comp-button-secondary-medium-padding-horizontal-default);
@@ -61,7 +61,6 @@
     --button-tertiary-background-color-hover-custom: var(--mdx-comp-button-tertiary-medium-background-color-hover);
     --button-tertiary-border-color-custom: var(--mdx-comp-button-tertiary-medium-border-color-default);
     --button-tertiary-border-radius: var(--mdx-comp-button-tertiary-medium-border-radius-default);
-    --button-tertiary-border-radius: var(--mdx-comp-keyboard-focus-border-radius-default);
     --button-tertiary-border-width-custom: var(--mdx-comp-button-tertiary-medium-border-width-default);
     --button-tertiary-color-custom: var(--mdx-comp-button-tertiary-medium-color-default);
     --button-tertiary-color-disabled-custom: var(--mdx-comp-button-tertiary-medium-color-disabled);
@@ -71,6 +70,7 @@
     --button-tertiary-font-weight: var(--mdx-comp-button-tertiary-medium-font-default-font-weight);
     --button-tertiary-icon-left-margin: var(--mdx-comp-button-tertiary-medium-gap-icon-text-default);
     --button-tertiary-icon-right-margin: var(--mdx-comp-button-tertiary-medium-gap-icon-text-default);
+    --button-tertiary-outline-border-radius: var(--mdx-comp-keyboard-focus-border-radius-default);
     --button-tertiary-outline-color: var(--mdx-comp-keyboard-focus-color-default);
     --button-tertiary-outline-width: var(--mdx-comp-keyboard-focus-border-width-default);
     --button-tertiary-padding-custom: var(--mdx-comp-button-tertiary-medium-padding-vertical-default) var(--mdx-comp-button-tertiary-medium-padding-horizontal-default);
