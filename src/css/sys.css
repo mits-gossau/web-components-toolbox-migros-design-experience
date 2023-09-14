@@ -10,7 +10,7 @@
     --color-active: var(--color-hover);
     --color-disabled: var(--mdx-sys-color-error-subtle3);
     --color-error: var(--mdx-sys-color-error-default);
-    --color-hover: var(--mdx-sys-color-primary-bold3);
+    --color-hover: var(--mdx-sys-color-primary-bold1);
     --color-secondary: var(--mdx-sys-color-primary-default);
     --color: var(--mdx-sys-color-neutral-default);
     /* font */
