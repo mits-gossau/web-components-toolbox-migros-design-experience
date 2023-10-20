@@ -30,8 +30,8 @@
     --button-quaternary-font-family-custom: var(--mdx-comp-button-quaternary-medium-font-default-font-family);
     --button-quaternary-font-size: var(--mdx-comp-button-quaternary-medium-font-default-font-size);
     --button-quaternary-font-weight: var(--mdx-comp-button-quaternary-medium-font-default-font-weight);
-    --button-quaternary-icon-left-margin: var(--mdx-comp-button-quaternary-medium-gap-icon-text-default);
-    --button-quaternary-icon-right-margin: var(--mdx-comp-button-quaternary-medium-gap-icon-text-default);
+    --button-quaternary-icon-left-margin: 0 var(--mdx-comp-button-quaternary-medium-gap-icon-text-default) 0 0;
+    --button-quaternary-icon-right-margin: 0 0 0 var(--mdx-comp-button-quaternary-medium-gap-icon-text-default);
     --button-quaternary-outline-border-radius: var(--mdx-comp-keyboard-focus-border-radius-default);
     --button-quaternary-outline-color: var(--mdx-comp-keyboard-focus-color-default);
     --button-quaternary-outline-width: var(--mdx-comp-keyboard-focus-border-width-default);
@@ -49,8 +49,8 @@
     --button-secondary-font-family-custom: var(--mdx-comp-button-secondary-medium-font-default-font-family);
     --button-secondary-font-size: var(--mdx-comp-button-secondary-medium-font-default-font-size);
     --button-secondary-font-weight: var(--mdx-comp-button-secondary-medium-font-default-font-weight);
-    --button-secondary-icon-left-margin: var(--mdx-comp-button-secondary-medium-gap-icon-text-default);
-    --button-secondary-icon-right-margin: var(--mdx-comp-button-secondary-medium-gap-icon-text-default);
+    --button-secondary-icon-left-margin: 0 var(--mdx-comp-button-secondary-medium-gap-icon-text-default) 0 0;
+    --button-secondary-icon-right-margin: 0 0 0 var(--mdx-comp-button-secondary-medium-gap-icon-text-default);
     --button-secondary-outline-border-radius: var(--mdx-comp-keyboard-focus-border-radius-default);
     --button-secondary-outline-color: var(--mdx-comp-keyboard-focus-color-default);
     --button-secondary-outline-width: var(--mdx-comp-keyboard-focus-border-width-default);
@@ -68,8 +68,8 @@
     --button-tertiary-font-family-custom: var(--mdx-comp-button-tertiary-medium-font-default-font-family);
     --button-tertiary-font-size: var(--mdx-comp-button-tertiary-medium-font-default-font-size);
     --button-tertiary-font-weight: var(--mdx-comp-button-tertiary-medium-font-default-font-weight);
-    --button-tertiary-icon-left-margin: var(--mdx-comp-button-tertiary-medium-gap-icon-text-default);
-    --button-tertiary-icon-right-margin: var(--mdx-comp-button-tertiary-medium-gap-icon-text-default);
+    --button-tertiary-icon-left-margin: 0 var(--mdx-comp-button-tertiary-medium-gap-icon-text-default) 0 0;
+    --button-tertiary-icon-right-margin: 0 0 0 var(--mdx-comp-button-tertiary-medium-gap-icon-text-default);
     --button-tertiary-outline-border-radius: var(--mdx-comp-keyboard-focus-border-radius-default);
     --button-tertiary-outline-color: var(--mdx-comp-keyboard-focus-color-default);
     --button-tertiary-outline-width: var(--mdx-comp-keyboard-focus-border-width-default);
