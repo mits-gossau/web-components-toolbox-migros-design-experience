@@ -8,8 +8,9 @@
     --button-primary-color-custom: var(--mdx-comp-button-primary-medium-color-default);
     --button-primary-color-disabled-custom: var(--mdx-comp-button-primary-medium-color-disabled);
     --button-primary-color-hover-custom: var(--mdx-comp-button-primary-medium-color-hover);
-    --button-primary-font-family-custom: var(--mdx-comp-button-primary-medium-font-default, var(--mdx-comp-button-primary-medium-font-default-font-family));
+    --button-primary-font-family-custom: var(--mdx-comp-button-primary-medium-font-default-font, var(--mdx-comp-button-primary-medium-font-default-font-family));
     --button-primary-font-size: var(--mdx-comp-button-primary-medium-font-default-font-size);
+    --button-primary-line-height: 1.125em;
     --button-primary-font-weight: var(--mdx-comp-button-primary-medium-font-default-font-weight);
     --button-primary-icon-left-margin: 0 var(--mdx-comp-button-primary-medium-gap-icon-text-default) 0 0;
     --button-primary-icon-right-margin: 0 0 0 var(--mdx-comp-button-primary-medium-gap-icon-text-default);
@@ -27,8 +28,9 @@
     --button-quaternary-color-custom: var(--mdx-comp-button-quaternary-medium-color-default);
     --button-quaternary-color-disabled-custom: var(--mdx-comp-button-quaternary-medium-color-disabled);
     --button-quaternary-color-hover-custom: var(--mdx-comp-button-quaternary-medium-color-hover);
-    --button-quaternary-font-family-custom: var(--mdx-comp-button-quaternary-medium-font-default, var(--mdx-comp-button-quaternary-medium-font-default-font-family));
+    --button-quaternary-font-family-custom: var(--mdx-comp-button-quaternary-medium-font-default-font, var(--mdx-comp-button-quaternary-medium-font-default-font-family));
     --button-quaternary-font-size: var(--mdx-comp-button-quaternary-medium-font-default-font-size);
+    --button-quaternary-line-height: 1.125em;
     --button-quaternary-font-weight: var(--mdx-comp-button-quaternary-medium-font-default-font-weight);
     --button-quaternary-icon-left-margin: 0 var(--mdx-comp-button-quaternary-medium-gap-icon-text-default) 0 0;
     --button-quaternary-icon-right-margin: 0 0 0 var(--mdx-comp-button-quaternary-medium-gap-icon-text-default);
@@ -46,8 +48,9 @@
     --button-secondary-color-custom: var(--mdx-comp-button-secondary-medium-color-default);
     --button-secondary-color-disabled-custom: var(--mdx-comp-button-secondary-medium-color-disabled);
     --button-secondary-color-hover-custom: var(--mdx-comp-button-secondary-medium-color-hover);
-    --button-secondary-font-family-custom: var(--mdx-comp-button-secondary-medium-font-default, var(--mdx-comp-button-secondary-medium-font-default-font-family));
+    --button-secondary-font-family-custom: var(--mdx-comp-button-secondary-medium-font-default-font, var(--mdx-comp-button-secondary-medium-font-default-font-family));
     --button-secondary-font-size: var(--mdx-comp-button-secondary-medium-font-default-font-size);
+    --button-secondary-line-height: 1.125em;
     --button-secondary-font-weight: var(--mdx-comp-button-secondary-medium-font-default-font-weight);
     --button-secondary-icon-left-margin: 0 var(--mdx-comp-button-secondary-medium-gap-icon-text-default) 0 0;
     --button-secondary-icon-right-margin: 0 0 0 var(--mdx-comp-button-secondary-medium-gap-icon-text-default);
@@ -65,8 +68,9 @@
     --button-tertiary-color-custom: var(--mdx-comp-button-tertiary-medium-color-default);
     --button-tertiary-color-disabled-custom: var(--mdx-comp-button-tertiary-medium-color-disabled);
     --button-tertiary-color-hover-custom: var(--mdx-comp-button-tertiary-medium-color-hover);
-    --button-tertiary-font-family-custom: var(--mdx-comp-button-tertiary-medium-font-default, var(--mdx-comp-button-tertiary-medium-font-default-font-family));
+    --button-tertiary-font-family-custom: var(--mdx-comp-button-tertiary-medium-font-default-font, var(--mdx-comp-button-tertiary-medium-font-default-font-family));
     --button-tertiary-font-size: var(--mdx-comp-button-tertiary-medium-font-default-font-size);
+    --button-tertiary-line-height: 1.125em;
     --button-tertiary-font-weight: var(--mdx-comp-button-tertiary-medium-font-default-font-weight);
     --button-tertiary-icon-left-margin: 0 var(--mdx-comp-button-tertiary-medium-gap-icon-text-default) 0 0;
     --button-tertiary-icon-right-margin: 0 0 0 var(--mdx-comp-button-tertiary-medium-gap-icon-text-default);
