@@ -20,6 +20,7 @@
     document.querySelector('#pages').innerHTML = /* HTML */`
       <ul>
         <li><a href="./src/es/components/web-components-toolbox/docs/Template.html?${pageQuery}&content=./src/es/components/pages/Home.html">Home</a></li>
+        <li><a href="./src/es/components/web-components-toolbox/docs/Template.html?${pageQuery}&content=./src/es/components/pages/MdxComponents.html">MdxComponents</a></li>
       </ul>
     `
   </script>
@@ -47,14 +48,6 @@
   `
   </script>
   -->
-  <hr />
-  <h1>MDX COMPONENTS</h1>
-  <script>
-    import('./node_modules/@migros/mdx-web-components/dist/esm/mdx-checkbox.entry.js').then(
-      module => self.customElements.define('mdx-checkbox', module.mdx_checkbox)
-    )
-  </script>
-  <mdx-checkbox></mdx-checkbox>
   <hr />
   <h3>web-components-toolbox</h3>
   <ul>
