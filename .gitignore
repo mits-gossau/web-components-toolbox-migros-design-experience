@@ -8,7 +8,7 @@ node_modules/@migros/mdx-design-tokens/*
 node_modules/@migros/mdx-web-components/*
 !node_modules/@migros/mdx-web-components/dist/
 node_modules/@migros/mdx-web-components/dist/*
-!node_modules/@migros/mdx-web-components/dist/esm/
+!node_modules/@migros/mdx-web-components/dist/mdx-web-components/
 
 # IDEs and editors
 /.idea
