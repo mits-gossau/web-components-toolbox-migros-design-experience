@@ -1,10 +1,10 @@
-@import "../../node_modules/@migros/mdx-design-tokens/dist/01_base/border-rem.css";
-@import "../../node_modules/@migros/mdx-design-tokens/dist/01_base/color-rem.css";
-@import "../../node_modules/@migros/mdx-design-tokens/dist/01_base/font-rem.css";
-@import "../../node_modules/@migros/mdx-design-tokens/dist/01_base/motion-rem.css";
-@import "../../node_modules/@migros/mdx-design-tokens/dist/01_base/opacity-rem.css";
-@import "../../node_modules/@migros/mdx-design-tokens/dist/01_base/shadows-rem.css";
-@import "../../node_modules/@migros/mdx-design-tokens/dist/01_base/spacing-rem.css";
+@import "../../node_modules/@migros/mdx-design-tokens/dist/css/01_base/border-rem.css";
+@import "../../node_modules/@migros/mdx-design-tokens/dist/css/01_base/color.css";
+@import "../../node_modules/@migros/mdx-design-tokens/dist/css/01_base/font-rem.css";
+@import "../../node_modules/@migros/mdx-design-tokens/dist/css/01_base/motion.css";
+@import "../../node_modules/@migros/mdx-design-tokens/dist/css/01_base/opacity.css";
+@import "../../node_modules/@migros/mdx-design-tokens/dist/css/01_base/shadows.css";
+@import "../../node_modules/@migros/mdx-design-tokens/dist/css/01_base/spacing-rem.css";
 
 /* border-rem */
 :root {

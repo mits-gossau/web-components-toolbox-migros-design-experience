@@ -3,7 +3,12 @@
 # dependencies
 node_modules/*
 !node_modules/@migros/
-/bower_components
+node_modules/@migros/mdx-design-tokens/*
+!node_modules/@migros/mdx-design-tokens/dist/
+node_modules/@migros/mdx-web-components/*
+!node_modules/@migros/mdx-web-components/dist/
+node_modules/@migros/mdx-web-components/dist/*
+!node_modules/@migros/mdx-web-components/dist/esm/
 
 # IDEs and editors
 /.idea

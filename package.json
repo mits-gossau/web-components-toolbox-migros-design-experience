@@ -12,7 +12,8 @@
   "author": "weedshaker@gmail.com, edx.mgb@gmail.com, alexander.schmidt1@mgb.ch",
   "license": "MIT",
   "dependencies": {
-    "@migros/mdx-design-tokens": "^0.63.3"
+    "@migros/mdx-design-tokens": "*",
+    "@migros/mdx-web-components": "*"
   },
   "devDependencies": {
     "@playwright/test": "^1.20.2",
