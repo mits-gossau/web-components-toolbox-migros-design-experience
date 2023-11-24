@@ -36,7 +36,8 @@
     </ul>
   `
   </script>
-  <h3>Details</h3>
+  <h3>Details (on hold)</h3>
+  <!--
   <div id=details></div>
   <script>
     document.querySelector('#details').innerHTML = /* HTML */`
@@ -45,6 +46,15 @@
     </ul>
   `
   </script>
+  -->
+  <hr />
+  <h1>MDX COMPONENTS</h1>
+  <script>
+    import('./node_modules/@migros/mdx-web-components/dist/esm/mdx-checkbox.entry.js').then(
+      module => self.customElements.define('mdx-checkbox', module.mdx_checkbox)
+    )
+  </script>
+  <mdx-checkbox></mdx-checkbox>
   <hr />
   <h3>web-components-toolbox</h3>
   <ul>
