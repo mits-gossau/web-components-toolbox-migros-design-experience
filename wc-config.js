@@ -209,6 +209,11 @@
       url: 'web-components-toolbox/src/es/components/thirdParty/',
       separateFolder: true
     }
+    ,
+    {
+      selector: 'mdx-component',
+      url: 'organisms/MdxComponent.js'
+    }
   ] // directories
   // ↑↑↑ adjustable ↑↑↑
 )

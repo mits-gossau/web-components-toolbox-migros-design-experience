@@ -1,14 +1,21 @@
-<script
-  type="module"
-  src="./node_modules/@migros/mdx-web-components/dist/mdx-web-components/mdx-web-components.esm.js"
-></script>
+<!-- https://mdx-web-components.migros.net/ -->
+<h2>Button</h2>
 <div>
-  <mdx-alert-button
-    click="function () {}"
-    href="https://www.migros.ch/en"
-    aria-label="Aria-Label"
-    target="_self"
+  <mdx-component
+    click-event-name="mdx-component-click-event"
+    mutation-callback-event-name="mdx-component-mutation-callback"
   >
-  <span>Label</span>
-</mdx-alert-button>
+    <mdx-alert-button>
+      <span>Label</span>
+    </mdx-alert-button>
+  </mdx-component>
+</div>
+<hr>
+<h2>Checkbox</h2>
+<div>
+  <mdx-component>
+    <mdx-checkbox label="Label" error="Error" togglecheckbox="function () {}">
+      <span slot="description">Checkbox Description</span>
+    </mdx-checkbox>
+  </mdx-component>
 </div>
