@@ -143,7 +143,7 @@ export default class MdxComponent extends Mutation() {
       script.setAttribute('type', 'module')
       script.setAttribute('async', '')
       script.setAttribute('id', 'mdx')
-      script.setAttribute('src', '../../../../../node_modules/@migros/mdx-web-components/dist/mdx-web-components/mdx-web-components.esm.js')
+      script.setAttribute('src', `${this.importMetaUrl}../../../../node_modules/@migros/mdx-web-components/dist/mdx-web-components/mdx-web-components.esm.js`)
       // @ts-ignore
       script.onload = () => this.hasMdx
         ? resolve(true)
