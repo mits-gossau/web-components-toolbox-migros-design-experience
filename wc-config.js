@@ -208,11 +208,15 @@
       selector: 'third-party-',
       url: 'web-components-toolbox/src/es/components/thirdParty/',
       separateFolder: true
-    }
-    ,
+    },
     {
       selector: 'mdx-component',
       url: 'organisms/MdxComponent.js'
+    },
+    // mdx-test-component is for testing purpose only!
+    {
+      selector: 'mdx-test-component',
+      url: 'tests/MdxTestComponent.js'
     }
   ] // directories
   // ↑↑↑ adjustable ↑↑↑

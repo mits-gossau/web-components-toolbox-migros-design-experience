@@ -4,7 +4,7 @@ import { Mutation } from '../web-components-toolbox/src/es/components/prototypes
 /* global self */
 
 /**
-* Creates a Datepicker
+* Creates a Wrapper for MDX web components
 *
 * @export
 * @attribute {namespace} namespace
@@ -21,6 +21,26 @@ export default class MdxComponent extends Mutation() {
     }, ...args)
 
     this.eventListeners = new Map()
+    this.listenerEventListener = async event => {
+      const property = await this.getAttribute('listener-detail-property-name').split(':').reduce(async (accumulator, propertyName) => {
+        // @ts-ignore
+        propertyName = propertyName.replace(/-([a-z]{1})/g, (match, p1) => p1.toUpperCase())
+        if (accumulator instanceof Promise) accumulator = await accumulator
+        if (!accumulator) return {} // error handling, in case the await on fetch does not resolve
+        if (accumulator[propertyName]) return accumulator[propertyName]
+        if (Array.isArray(accumulator)) return accumulator.map(obj => obj[propertyName])
+        return {} // error handling, in case the await on fetch does not resolve
+      }, event.detail)
+      if (typeof property === 'object') {
+        for (const key in property) {
+          if (property[key] === 'remove') {
+            this.target.removeAttribute(key)
+          } else {
+            this.target.setAttribute(key, property[key])
+          }
+        }
+      }
+    }
   }
   
   connectedCallback () {
@@ -31,9 +51,9 @@ export default class MdxComponent extends Mutation() {
     Promise.all(showPromises).then(() => {
       this.mutationObserveStart(this.target)
       Array.from(this.attributes).forEach(attribute => {
-        if (attribute.name && attribute.name.includes('-event-name') && attribute.name !== 'mutation-callback-event-name') {
+        if (attribute.name && attribute.name.includes('-event-name') && attribute.name !== 'mutation-callback-event-name' && attribute.name !== 'listener-event-name') {
           const type = attribute.name.replace('-event-name', '')
-          const listener = event => this.dispatchEvent(new CustomEvent(attribute.key || `${this.tagName}-${type}-event`, {
+          const listener = event => this.dispatchEvent(new CustomEvent(attribute.value || `${this.tagName}-${type}-event`, {
             detail: {
               type,
               origEvent: event,
@@ -48,6 +68,7 @@ export default class MdxComponent extends Mutation() {
           this.eventListeners.set(type, listener)
         }
       })
+      if (this.getAttribute('listener-event-name') && this.getAttribute('listener-detail-property-name')) document.body.addEventListener(this.getAttribute('listener-event-name'), this.listenerEventListener)
       this.hidden = false
     })
   }
@@ -55,6 +76,7 @@ export default class MdxComponent extends Mutation() {
   disconnectedCallback () {
     super.disconnectedCallback()
     this.eventListeners.forEach((listener, type) => this.target.removeEventListener(type, listener))
+    if (this.getAttribute('listener-event-name') && this.getAttribute('listener-detail-property-name')) document.body.removeEventListener(this.getAttribute('listener-event-name'), this.listenerEventListener)
   }
 
   mutationCallback (mutationList, observer) {
