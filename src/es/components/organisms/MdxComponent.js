@@ -14,6 +14,7 @@ export default class MdxComponent extends Mutation() {
   constructor (options = {}, ...args) {
     super({
       importMetaUrl: import.meta.url,
+      mode: 'false',
       mutationObserverInit: {
         attributes: true
       },
