@@ -43,7 +43,7 @@ export default class MdxComponent extends Mutation() {
       }
     }
   }
-  
+
   connectedCallback () {
     this.hidden = true
     const showPromises = []
@@ -93,7 +93,7 @@ export default class MdxComponent extends Mutation() {
       composed: true
     }))
   }
-  
+
   /**
   * evaluates if a render is necessary
   *
@@ -102,7 +102,7 @@ export default class MdxComponent extends Mutation() {
   shouldRenderCSS () {
     return !this.root.querySelector(`:host > style[_css], ${this.tagName} > style[_css]`)
   }
-  
+
   /**
   * evaluates if a render is necessary
   *
@@ -111,17 +111,17 @@ export default class MdxComponent extends Mutation() {
   shouldRenderHTML () {
     return !this.root.querySelector('script')
   }
-  
+
   /**
   * renders the css
   *
   * @return {Promise<void>}
   */
   renderCSS () {
-    this.css = /* css */``
+    this.css = /* css */''
     return Promise.resolve()
   }
-  
+
   /**
   * renders the html
   *
@@ -130,7 +130,7 @@ export default class MdxComponent extends Mutation() {
   renderHTML () {
     return this.loadDependency()
   }
-  
+
   /**
   * fetch dependency
   *
