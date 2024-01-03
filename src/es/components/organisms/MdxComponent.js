@@ -1,6 +1,7 @@
 // @ts-check
 import { Mutation } from '../web-components-toolbox/src/es/components/prototypes/Mutation.js'
 
+/* global CustomEvent */
 /* global self */
 
 /**
@@ -154,7 +155,7 @@ export default class MdxComponent extends Mutation() {
   }
 
   get hasMdx () {
-    return !!customElements.get('mdx-button')
+    return !!self.customElements.get('mdx-button')
   }
 
   get target () {

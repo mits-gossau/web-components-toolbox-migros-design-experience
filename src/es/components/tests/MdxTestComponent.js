@@ -1,5 +1,7 @@
 import { Shadow } from '../web-components-toolbox/src/es/components/prototypes/Shadow.js'
 
+/* global CustomEvent */
+
 /**
  * This component shall simulate some behavior of a controller for pure test and demo purpose
  *

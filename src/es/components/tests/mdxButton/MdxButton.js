@@ -1,5 +1,8 @@
 // @ts-check
 
+/* global HTMLElement */
+/* global location */
+
 // THIS FILE REFLECTS THE MDX BUTTON (packages/web-components/src/components/button/button.tsx) IN VANILLA JS FOR DEMO PURPOSES
 // IT INCLUDES THE "EXPORTS", "UTILS" AND "SCSS" ALL IN ONE FILE, TO KEEP IT SIMPLE
 // use customElements.define (https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define) to load this web component into your DOM
@@ -11,7 +14,7 @@ const BUTTON_VARIANTS = {
   secondary: 'secondary',
   tertiary: 'tertiary',
   quaternary: 'quaternary',
-  get default() {
+  get default () {
     return this.primary
   }
 }
@@ -21,7 +24,7 @@ const BUTTON_SIZES = {
   sm: 'sm',
   md: 'md',
   lg: 'lg',
-  get default() {
+  get default () {
     return this.md
   }
 }
@@ -31,7 +34,7 @@ const BUTTON_TYPE = {
   submit: 'submit',
   reset: 'reset',
   button: 'button',
-  get default() {
+  get default () {
     return this.submit
   }
 }
@@ -40,7 +43,7 @@ const BUTTON_TYPE = {
 const BUTTON_AS = {
   button: 'button',
   link: 'link',
-  get default() {
+  get default () {
     return this.button
   }
 }
@@ -109,7 +112,7 @@ export default class MdxButton extends HTMLElement {
       const base = new URL(`${window.location.protocol}//${window.location.host}`)
       return new URL(href, base).origin !== location.origin
     } catch (e) {
-      return false;
+      return false
     }
   }
   // ↑↑↑ packages/web-components/src/utils/isExternalUrl.ts ↑↑↑
