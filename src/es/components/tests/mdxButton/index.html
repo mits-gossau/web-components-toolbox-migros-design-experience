@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link href=../../../../css/variablesCustom.css rel=stylesheet type="text/css">
+   <title>VanillaJS MdxButton</title>
+</head>
+<body>
+  <mdx-button disabled>Hello</mdx-button>
+  <hr>
+  <mdx-button variant="primary" as="button" type="submit" size="lg">
+    <span>Label</span>
+  </mdx-button>
+  <hr>
+  <mdx-button variant="secondary" as="link">
+    <span>Label</span>
+  </mdx-button>
+  <hr>
+  <script rel=preload type=module>
+    Promise.all([
+      import('./MdxButton.js').then(module => ['mdx-button', module.default]),
+    ]).then(elements => elements.forEach(element => {
+      // don't define already existing customElements
+      if (element && !customElements.get(element[0])) customElements.define(...element)
+    }))
+  </script>
+</body>
+</html>

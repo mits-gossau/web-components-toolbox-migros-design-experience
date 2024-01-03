@@ -217,6 +217,10 @@
     {
       selector: 'mdx-test-component',
       url: 'tests/MdxTestComponent.js'
+    },
+    {
+      selector: 'a-mdx-button',
+      url: 'tests/mdxButton/MdxButton.js'
     }
   ] // directories
   // ↑↑↑ adjustable ↑↑↑
