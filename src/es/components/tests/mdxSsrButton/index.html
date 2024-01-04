@@ -1,173 +1,19 @@
-// @ts-check
-
-/* global HTMLElement */
-/* global location */
-
-// THIS FILE REFLECTS THE MDX BUTTON (packages/web-components/src/components/button/button.tsx) IN VANILLA JS FOR DEMO PURPOSES
-// IT INCLUDES THE "EXPORTS", "UTILS" AND "SCSS" ALL IN ONE FILE, TO KEEP IT SIMPLE
-// use customElements.define (https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define) to load this web component into your DOM
-
-// ↓↓↓ packages/web-components/src/components/button/exports.ts ↓↓↓
-/** @typedef {'primary' | 'secondary' | 'tertiary' | 'quaternary'} BUTTON_VARIANTS_INTERFACE */
-const BUTTON_VARIANTS = {
-  primary: 'primary',
-  secondary: 'secondary',
-  tertiary: 'tertiary',
-  quaternary: 'quaternary',
-  get default () {
-    return this.primary
-  }
-}
-
-/** @typedef {'sm' | 'md' | 'lg'} BUTTON_SIZES_INTERFACE */
-const BUTTON_SIZES = {
-  sm: 'sm',
-  md: 'md',
-  lg: 'lg',
-  get default () {
-    return this.md
-  }
-}
-
-/** @typedef {'button' | 'submit' | 'reset'} BUTTON_TYPE_INTERFACE */
-const BUTTON_TYPE = {
-  submit: 'submit',
-  reset: 'reset',
-  button: 'button',
-  get default () {
-    return this.submit
-  }
-}
-
-/** @typedef {'button' | 'link'} BUTTON_AS_INTERFACE */
-const BUTTON_AS = {
-  button: 'button',
-  link: 'link',
-  get default () {
-    return this.button
-  }
-}
-// ↑↑↑ packages/web-components/src/components/button/exports.ts ↑↑↑
-
-/**
-* @export
-* @class MdxButton
-* @type {CustomElementConstructor}
-*/
-export default class MdxButton extends HTMLElement {
-  static get observedAttributes () {
-    return ['disabled', 'type', 'as', 'href', 'aria-label', 'target']
-  }
-
-  /** @type {boolean} */
-  get disabled () {
-    return this.hasAttribute('disabled')
-  }
-
-  /** @type {BUTTON_VARIANTS_INTERFACE} */
-  get variant () {
-    return BUTTON_VARIANTS[this.getAttribute('variant')] || BUTTON_VARIANTS.default
-  }
-
-  /** @type {BUTTON_SIZES_INTERFACE} */
-  get size () {
-    return BUTTON_SIZES[this.getAttribute('size')] || BUTTON_SIZES.default
-  }
-
-  /** @type {BUTTON_TYPE_INTERFACE} */
-  get type () {
-    return BUTTON_TYPE[this.getAttribute('type')] || BUTTON_TYPE.default
-  }
-
-  /** @type {BUTTON_AS_INTERFACE} */
-  get as () {
-    return BUTTON_AS[this.getAttribute('as')] || BUTTON_AS.default
-  }
-
-  /** @type {string} */
-  get href () {
-    return this.getAttribute('href') || ''
-  }
-
-  /** @type {string} */
-  get ariaLabel () {
-    return this.getAttribute('aria-label') || ''
-  }
-
-  /** @type {string | '_self'} */
-  get target () {
-    return this.getAttribute('target') || '_self'
-  }
-
-  // ↓↓↓ packages/web-components/src/utils/isExternalUrl.ts ↓↓↓
-  /**
-   * @param {string} href
-   * @return {boolean}
-   */
-  #isExternalURL (href) {
-    if (!window) {
-      throw new Error('window is not defined')
-    }
-    try {
-      const base = new URL(`${window.location.protocol}//${window.location.host}`)
-      return new URL(href, base).origin !== location.origin
-    } catch (e) {
-      return false
-    }
-  }
-  // ↑↑↑ packages/web-components/src/utils/isExternalUrl.ts ↑↑↑
-
-  constructor () {
-    super()
-
-    this.shadow = this.attachShadow({ mode: 'open' })
-    // reflect default values as attribute
-    if (!this.hasAttribute('variant')) this.setAttribute('variant', BUTTON_VARIANTS.default)
-    if (!this.hasAttribute('size')) this.setAttribute('size', BUTTON_SIZES.default)
-    if (!this.hasAttribute('as')) this.setAttribute('as', BUTTON_AS.default)
-  }
-
-  connectedCallback () {
-    if (this.shouldRenderCSS()) this.renderCSS()
-    if (this.shouldRenderHTML()) this.renderHTML()
-  }
-
-  attributeChangedCallback (name, oldValue, newValue) {
-    if (name === 'as' && oldValue && oldValue !== newValue) {
-      this.button?.remove()
-      return this.renderHTML()
-    }
-    this.button?.setAttribute(name, this[name.replace(/-(.{1})/, (match, p1) => p1.toUpperCase())])
-  }
-
-  /**
-   * evaluates if a render is necessary
-   *
-   * @return {boolean}
-   */
-  shouldRenderCSS () {
-    return !this.shadow.querySelector(':host > style[_css]')
-  }
-
-  /**
-   * evaluates if a render is necessary
-   *
-   * @return {boolean}
-   */
-  shouldRenderHTML () {
-    return !this.button
-  }
-
-  // ↓↓↓ packages/web-components/src/components/button/button.scss ↓↓↓
-  /**
-   * renders the css
-   * @return {void}
-   */
-  renderCSS () {
-    const style = document.createElement('style')
-    style.setAttribute('_css', '')
-    style.textContent = /* css */`
-      :host .button {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link href=../../../../css/variablesCustom.css rel=stylesheet type="text/css">
+   <title>VanillaJS MdxButton</title>
+</head>
+<body>
+  <h2>Normally rendered</h2>
+  <mdx-button>Hello</mdx-button>
+  <hr>
+  <h2>Server side rendered</h2>
+  <mdx-button as="button" id="random_dec94ceb-8af3-4fde-a487-01c96564422a_id" variant="primary" size="md">
+    <style _css="">
+      #random_dec94ceb-8af3-4fde-a487-01c96564422a_id .button {
         align-items: center;
         box-sizing: border-box;
         cursor: pointer;
@@ -196,7 +42,7 @@ export default class MdxButton extends HTMLElement {
         }
       }
       
-      :host([variant='primary'][size='sm']) .button {
+      #random_dec94ceb-8af3-4fde-a487-01c96564422a_id[variant='primary'][size='sm'] .button {
         font: var(--mdx-comp-button-primary-small-font-default);
         color: var(--mdx-comp-button-primary-small-color-default);
         background-color: var(--mdx-comp-button-primary-small-background-color-default);
@@ -230,7 +76,7 @@ export default class MdxButton extends HTMLElement {
         }
       }
       
-      :host([variant='secondary'][size='sm']) .button {
+      #random_dec94ceb-8af3-4fde-a487-01c96564422a_id[variant='secondary'][size='sm'] .button {
         font: var(--mdx-comp-button-secondary-small-font-default);
         color: var(--mdx-comp-button-secondary-small-color-default);
         background-color: var(--mdx-comp-button-secondary-small-background-color-default);
@@ -264,7 +110,7 @@ export default class MdxButton extends HTMLElement {
         }
       }
       
-      :host([variant='tertiary'][size='sm']) .button {
+      #random_dec94ceb-8af3-4fde-a487-01c96564422a_id[variant='tertiary'][size='sm'] .button {
         font: var(--mdx-comp-button-tertiary-small-font-default);
         color: var(--mdx-comp-button-tertiary-small-color-default);
         background-color: var(--mdx-comp-button-tertiary-small-background-color-default);
@@ -298,7 +144,7 @@ export default class MdxButton extends HTMLElement {
         }
       }
       
-      :host([variant='quaternary'][size='sm']) .button {
+      #random_dec94ceb-8af3-4fde-a487-01c96564422a_id[variant='quaternary'][size='sm'] .button {
         font: var(--mdx-comp-button-quaternary-small-font-default);
         color: var(--mdx-comp-button-quaternary-small-color-default);
         background-color: var(--mdx-comp-button-quaternary-small-background-color-default);
@@ -332,7 +178,7 @@ export default class MdxButton extends HTMLElement {
         }
       }
       
-      :host([variant='primary'][size='md']) .button {
+      #random_dec94ceb-8af3-4fde-a487-01c96564422a_id[variant='primary'][size='md'] .button {
         font: var(--mdx-comp-button-primary-medium-font-default);
         color: var(--mdx-comp-button-primary-medium-color-default);
         background-color: var(--mdx-comp-button-primary-medium-background-color-default);
@@ -367,7 +213,7 @@ export default class MdxButton extends HTMLElement {
         }
       }
       
-      :host([variant='secondary'][size='md']) .button {
+      #random_dec94ceb-8af3-4fde-a487-01c96564422a_id[variant='secondary'][size='md'] .button {
         font: var(--mdx-comp-button-secondary-medium-font-default);
         color: var(--mdx-comp-button-secondary-medium-color-default);
         background-color: var(--mdx-comp-button-secondary-medium-background-color-default);
@@ -401,7 +247,7 @@ export default class MdxButton extends HTMLElement {
         }
       }
       
-      :host([variant='tertiary'][size='md']) .button {
+      #random_dec94ceb-8af3-4fde-a487-01c96564422a_id[variant='tertiary'][size='md'] .button {
         font: var(--mdx-comp-button-tertiary-medium-font-default);
         color: var(--mdx-comp-button-tertiary-medium-color-default);
         background-color: var(--mdx-comp-button-tertiary-medium-background-color-default);
@@ -435,7 +281,7 @@ export default class MdxButton extends HTMLElement {
         }
       }
       
-      :host([variant='quaternary'][size='md']) .button {
+      #random_dec94ceb-8af3-4fde-a487-01c96564422a_id[variant='quaternary'][size='md'] .button {
         font: var(--mdx-comp-button-quaternary-medium-font-default);
         color: var(--mdx-comp-button-quaternary-medium-color-default);
         background-color: var(--mdx-comp-button-quaternary-medium-background-color-default);
@@ -469,7 +315,7 @@ export default class MdxButton extends HTMLElement {
         }
       }
       
-      :host([variant='primary'][size='lg']) .button {
+      #random_dec94ceb-8af3-4fde-a487-01c96564422a_id[variant='primary'][size='lg'] .button {
         font: var(--mdx-comp-button-primary-large-font-default);
         color: var(--mdx-comp-button-primary-large-color-default);
         background-color: var(--mdx-comp-button-primary-large-background-color-default);
@@ -503,7 +349,7 @@ export default class MdxButton extends HTMLElement {
         }
       }
       
-      :host([variant='secondary'][size='lg']) .button {
+      #random_dec94ceb-8af3-4fde-a487-01c96564422a_id[variant='secondary'][size='lg'] .button {
         font: var(--mdx-comp-button-secondary-large-font-default);
         color: var(--mdx-comp-button-secondary-large-color-default);
         background-color: var(--mdx-comp-button-secondary-large-background-color-default);
@@ -537,7 +383,7 @@ export default class MdxButton extends HTMLElement {
         }
       }
       
-      :host([variant='tertiary'][size='lg']) .button {
+      #random_dec94ceb-8af3-4fde-a487-01c96564422a_id[variant='tertiary'][size='lg'] .button {
         font: var(--mdx-comp-button-tertiary-large-font-default);
         color: var(--mdx-comp-button-tertiary-large-color-default);
         background-color: var(--mdx-comp-button-tertiary-large-background-color-default);
@@ -571,7 +417,7 @@ export default class MdxButton extends HTMLElement {
         }
       }
       
-      :host([variant='quaternary'][size='lg']) .button {
+      #random_dec94ceb-8af3-4fde-a487-01c96564422a_id[variant='quaternary'][size='lg'] .button {
         font: var(--mdx-comp-button-quaternary-large-font-default);
         color: var(--mdx-comp-button-quaternary-large-color-default);
         background-color: var(--mdx-comp-button-quaternary-large-background-color-default);
@@ -605,53 +451,38 @@ export default class MdxButton extends HTMLElement {
         }
       }
       
-      :host([variant='primary'][size='sm'][full-width]) .button,
-      :host([variant='primary'][size='md'][full-width]) .button,
-      :host([variant='primary'][size='lg'][full-width]) .button,
-      :host([variant='secondary'][size='sm'][full-width]) .button,
-      :host([variant='secondary'][size='md'][full-width]) .button,
-      :host([variant='secondary'][size='lg'][full-width]) .button,
-      :host([variant='tertiary'][size='sm'][full-width]) .button,
-      :host([variant='tertiary'][size='md'][full-width]) .button,
-      :host([variant='tertiary'][size='lg'][full-width]) .button,
-      :host([variant='quaternary'][size='sm'][full-width]) .button,
-      :host([variant='quaternary'][size='md'][full-width]) .button,
-      :host([variant='quaternary'][size='lg'][full-width]) .button {
+      #random_dec94ceb-8af3-4fde-a487-01c96564422a_id[variant='primary'][size='sm'][full-width] .button,
+      #random_dec94ceb-8af3-4fde-a487-01c96564422a_id[variant='primary'][size='md'][full-width] .button,
+      #random_dec94ceb-8af3-4fde-a487-01c96564422a_id[variant='primary'][size='lg'][full-width] .button,
+      #random_dec94ceb-8af3-4fde-a487-01c96564422a_id[variant='secondary'][size='sm'][full-width] .button,
+      #random_dec94ceb-8af3-4fde-a487-01c96564422a_id[variant='secondary'][size='md'][full-width] .button,
+      #random_dec94ceb-8af3-4fde-a487-01c96564422a_id[variant='secondary'][size='lg'][full-width] .button,
+      #random_dec94ceb-8af3-4fde-a487-01c96564422a_id[variant='tertiary'][size='sm'][full-width] .button,
+      #random_dec94ceb-8af3-4fde-a487-01c96564422a_id[variant='tertiary'][size='md'][full-width] .button,
+      #random_dec94ceb-8af3-4fde-a487-01c96564422a_id[variant='tertiary'][size='lg'][full-width] .button,
+      #random_dec94ceb-8af3-4fde-a487-01c96564422a_id[variant='quaternary'][size='sm'][full-width] .button,
+      #random_dec94ceb-8af3-4fde-a487-01c96564422a_id[variant='quaternary'][size='md'][full-width] .button,
+      #random_dec94ceb-8af3-4fde-a487-01c96564422a_id[variant='quaternary'][size='lg'][full-width] .button {
         width: 100%;
-      }    
-    `
-    this.shadow.appendChild(style)
-  }
-  // ↑↑↑ packages/web-components/src/components/button/button.scss ↑↑↑
-
-  /**
-   * Render HTML
-   * @return {void}
-   */
-  renderHTML () {
-    const div = document.createElement('div')
-    div.innerHTML = this.as === BUTTON_AS.button
-      ? /* HTML */`
-        <button part="button" class="button" type="${this.type}" ${this.disabled ? 'disabled' : ''}>
-          <slot></slot>
-        </button>
-      `
-      : /* HTML */`
-        <a
-          part="button"
-          class="button"
-          href="${this.href}"
-          aria-label="${this.ariaLabel}"
-          target="${this.target}"
-          rel="${this.#isExternalURL(this.href) ? 'noreferrer' : ''}"
-        >
-          <slot></slot>
-        </a>
-      `
-    this.shadow.appendChild(div.children[0])
-  }
-
-  get button () {
-    return this.shadow.querySelector('a,button')
-  }
-}
+      }
+    </style>
+    <button part="button" class="button" type="submit" as="button">Hello</button>
+  </mdx-button>
+  <hr>
+  <h3>JavaScript is not started yet, click below to define the elements!</h3>
+  <script rel=preload type=module>
+    const button = document.createElement('button')
+    button.textContent = 'start js'
+    button.addEventListener('click', event => {
+      Promise.all([
+        import('./MdxSsrButton.js').then(module => ['mdx-button', module.default]),
+      ]).then(elements => elements.forEach(element => {
+        // don't define already existing customElements
+        if (element && !customElements.get(element[0])) customElements.define(...element)
+      }))
+      button.remove()
+    })
+    document.body.appendChild(button)
+  </script>
+</body>
+</html>

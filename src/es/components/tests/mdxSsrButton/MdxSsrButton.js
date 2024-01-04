@@ -2,6 +2,7 @@
 
 /* global HTMLElement */
 /* global location */
+/* global crypto */
 
 // THIS FILE REFLECTS THE MDX BUTTON (packages/web-components/src/components/button/button.tsx) IN VANILLA JS FOR DEMO PURPOSES
 // IT INCLUDES THE "EXPORTS", "UTILS" AND "SCSS" ALL IN ONE FILE, TO KEEP IT SIMPLE
@@ -117,10 +118,25 @@ export default class MdxButton extends HTMLElement {
   }
   // ↑↑↑ packages/web-components/src/utils/isExternalUrl.ts ↑↑↑
 
+  cssSelector = 'style[_css]'
+  buttonSelector = '.button'
+
   constructor () {
     super()
 
-    this.shadow = this.attachShadow({ mode: 'open' })
+    this.initialNodes = Array.from(this.childNodes).reduce(
+      /**
+       * @param {any[]} acc
+       * @param {any} node
+       */
+      (acc, node) => {
+        if (!node.matches || !node.matches(`${this.cssSelector},${this.buttonSelector}`)) {
+          acc.push(node)
+        } else if (node.matches(this.buttonSelector)) {
+          Array.from(node.childNodes).forEach(childNode => acc.push(childNode))
+        }
+        return acc
+      }, [])
     // reflect default values as attribute
     if (!this.hasAttribute('variant')) this.setAttribute('variant', BUTTON_VARIANTS.default)
     if (!this.hasAttribute('size')) this.setAttribute('size', BUTTON_SIZES.default)
@@ -133,10 +149,7 @@ export default class MdxButton extends HTMLElement {
   }
 
   attributeChangedCallback (name, oldValue, newValue) {
-    if (name === 'as' && oldValue && oldValue !== newValue) {
-      this.button?.remove()
-      return this.renderHTML()
-    }
+    if (name === 'as' && oldValue && oldValue !== newValue) return this.renderHTML()
     this.button?.setAttribute(name, this[name.replace(/-(.{1})/, (match, p1) => p1.toUpperCase())])
   }
 
@@ -146,7 +159,7 @@ export default class MdxButton extends HTMLElement {
    * @return {boolean}
    */
   shouldRenderCSS () {
-    return !this.shadow.querySelector(':host > style[_css]')
+    return !this.querySelector(this.cssSelector)
   }
 
   /**
@@ -155,7 +168,7 @@ export default class MdxButton extends HTMLElement {
    * @return {boolean}
    */
   shouldRenderHTML () {
-    return !this.button
+    return !this.button || (this.button.tagName === 'BUTTON' && this.as === 'link') || (this.button.tagName === 'A' && this.as === 'button')
   }
 
   // ↓↓↓ packages/web-components/src/components/button/button.scss ↓↓↓
@@ -166,8 +179,10 @@ export default class MdxButton extends HTMLElement {
   renderCSS () {
     const style = document.createElement('style')
     style.setAttribute('_css', '')
+    if (!this.hasAttribute('id')) this.setAttribute('id', `random_${crypto.randomUUID()}_id`)
+    const hostSelector = `#${this.getAttribute('id')}`
     style.textContent = /* css */`
-      :host .button {
+      ${hostSelector} .button {
         align-items: center;
         box-sizing: border-box;
         cursor: pointer;
@@ -196,7 +211,7 @@ export default class MdxButton extends HTMLElement {
         }
       }
       
-      :host([variant='primary'][size='sm']) .button {
+      ${hostSelector}[variant='primary'][size='sm'] .button {
         font: var(--mdx-comp-button-primary-small-font-default);
         color: var(--mdx-comp-button-primary-small-color-default);
         background-color: var(--mdx-comp-button-primary-small-background-color-default);
@@ -230,7 +245,7 @@ export default class MdxButton extends HTMLElement {
         }
       }
       
-      :host([variant='secondary'][size='sm']) .button {
+      ${hostSelector}[variant='secondary'][size='sm'] .button {
         font: var(--mdx-comp-button-secondary-small-font-default);
         color: var(--mdx-comp-button-secondary-small-color-default);
         background-color: var(--mdx-comp-button-secondary-small-background-color-default);
@@ -264,7 +279,7 @@ export default class MdxButton extends HTMLElement {
         }
       }
       
-      :host([variant='tertiary'][size='sm']) .button {
+      ${hostSelector}[variant='tertiary'][size='sm'] .button {
         font: var(--mdx-comp-button-tertiary-small-font-default);
         color: var(--mdx-comp-button-tertiary-small-color-default);
         background-color: var(--mdx-comp-button-tertiary-small-background-color-default);
@@ -298,7 +313,7 @@ export default class MdxButton extends HTMLElement {
         }
       }
       
-      :host([variant='quaternary'][size='sm']) .button {
+      ${hostSelector}[variant='quaternary'][size='sm'] .button {
         font: var(--mdx-comp-button-quaternary-small-font-default);
         color: var(--mdx-comp-button-quaternary-small-color-default);
         background-color: var(--mdx-comp-button-quaternary-small-background-color-default);
@@ -332,7 +347,7 @@ export default class MdxButton extends HTMLElement {
         }
       }
       
-      :host([variant='primary'][size='md']) .button {
+      ${hostSelector}[variant='primary'][size='md'] .button {
         font: var(--mdx-comp-button-primary-medium-font-default);
         color: var(--mdx-comp-button-primary-medium-color-default);
         background-color: var(--mdx-comp-button-primary-medium-background-color-default);
@@ -367,7 +382,7 @@ export default class MdxButton extends HTMLElement {
         }
       }
       
-      :host([variant='secondary'][size='md']) .button {
+      ${hostSelector}[variant='secondary'][size='md'] .button {
         font: var(--mdx-comp-button-secondary-medium-font-default);
         color: var(--mdx-comp-button-secondary-medium-color-default);
         background-color: var(--mdx-comp-button-secondary-medium-background-color-default);
@@ -401,7 +416,7 @@ export default class MdxButton extends HTMLElement {
         }
       }
       
-      :host([variant='tertiary'][size='md']) .button {
+      ${hostSelector}[variant='tertiary'][size='md'] .button {
         font: var(--mdx-comp-button-tertiary-medium-font-default);
         color: var(--mdx-comp-button-tertiary-medium-color-default);
         background-color: var(--mdx-comp-button-tertiary-medium-background-color-default);
@@ -435,7 +450,7 @@ export default class MdxButton extends HTMLElement {
         }
       }
       
-      :host([variant='quaternary'][size='md']) .button {
+      ${hostSelector}[variant='quaternary'][size='md'] .button {
         font: var(--mdx-comp-button-quaternary-medium-font-default);
         color: var(--mdx-comp-button-quaternary-medium-color-default);
         background-color: var(--mdx-comp-button-quaternary-medium-background-color-default);
@@ -469,7 +484,7 @@ export default class MdxButton extends HTMLElement {
         }
       }
       
-      :host([variant='primary'][size='lg']) .button {
+      ${hostSelector}[variant='primary'][size='lg'] .button {
         font: var(--mdx-comp-button-primary-large-font-default);
         color: var(--mdx-comp-button-primary-large-color-default);
         background-color: var(--mdx-comp-button-primary-large-background-color-default);
@@ -503,7 +518,7 @@ export default class MdxButton extends HTMLElement {
         }
       }
       
-      :host([variant='secondary'][size='lg']) .button {
+      ${hostSelector}[variant='secondary'][size='lg'] .button {
         font: var(--mdx-comp-button-secondary-large-font-default);
         color: var(--mdx-comp-button-secondary-large-color-default);
         background-color: var(--mdx-comp-button-secondary-large-background-color-default);
@@ -537,7 +552,7 @@ export default class MdxButton extends HTMLElement {
         }
       }
       
-      :host([variant='tertiary'][size='lg']) .button {
+      ${hostSelector}[variant='tertiary'][size='lg'] .button {
         font: var(--mdx-comp-button-tertiary-large-font-default);
         color: var(--mdx-comp-button-tertiary-large-color-default);
         background-color: var(--mdx-comp-button-tertiary-large-background-color-default);
@@ -571,7 +586,7 @@ export default class MdxButton extends HTMLElement {
         }
       }
       
-      :host([variant='quaternary'][size='lg']) .button {
+      ${hostSelector}[variant='quaternary'][size='lg'] .button {
         font: var(--mdx-comp-button-quaternary-large-font-default);
         color: var(--mdx-comp-button-quaternary-large-color-default);
         background-color: var(--mdx-comp-button-quaternary-large-background-color-default);
@@ -605,22 +620,22 @@ export default class MdxButton extends HTMLElement {
         }
       }
       
-      :host([variant='primary'][size='sm'][full-width]) .button,
-      :host([variant='primary'][size='md'][full-width]) .button,
-      :host([variant='primary'][size='lg'][full-width]) .button,
-      :host([variant='secondary'][size='sm'][full-width]) .button,
-      :host([variant='secondary'][size='md'][full-width]) .button,
-      :host([variant='secondary'][size='lg'][full-width]) .button,
-      :host([variant='tertiary'][size='sm'][full-width]) .button,
-      :host([variant='tertiary'][size='md'][full-width]) .button,
-      :host([variant='tertiary'][size='lg'][full-width]) .button,
-      :host([variant='quaternary'][size='sm'][full-width]) .button,
-      :host([variant='quaternary'][size='md'][full-width]) .button,
-      :host([variant='quaternary'][size='lg'][full-width]) .button {
+      ${hostSelector}[variant='primary'][size='sm'][full-width] .button,
+      ${hostSelector}[variant='primary'][size='md'][full-width] .button,
+      ${hostSelector}[variant='primary'][size='lg'][full-width] .button,
+      ${hostSelector}[variant='secondary'][size='sm'][full-width] .button,
+      ${hostSelector}[variant='secondary'][size='md'][full-width] .button,
+      ${hostSelector}[variant='secondary'][size='lg'][full-width] .button,
+      ${hostSelector}[variant='tertiary'][size='sm'][full-width] .button,
+      ${hostSelector}[variant='tertiary'][size='md'][full-width] .button,
+      ${hostSelector}[variant='tertiary'][size='lg'][full-width] .button,
+      ${hostSelector}[variant='quaternary'][size='sm'][full-width] .button,
+      ${hostSelector}[variant='quaternary'][size='md'][full-width] .button,
+      ${hostSelector}[variant='quaternary'][size='lg'][full-width] .button {
         width: 100%;
-      }    
+      }
     `
-    this.shadow.appendChild(style)
+    this.appendChild(style)
   }
   // ↑↑↑ packages/web-components/src/components/button/button.scss ↑↑↑
 
@@ -629,12 +644,11 @@ export default class MdxButton extends HTMLElement {
    * @return {void}
    */
   renderHTML () {
+    this.button?.remove()
     const div = document.createElement('div')
     div.innerHTML = this.as === BUTTON_AS.button
       ? /* HTML */`
-        <button part="button" class="button" type="${this.type}" ${this.disabled ? 'disabled' : ''}>
-          <slot></slot>
-        </button>
+        <button part="button" class="button" type="${this.type}" ${this.disabled ? 'disabled' : ''}></button>
       `
       : /* HTML */`
         <a
@@ -644,14 +658,13 @@ export default class MdxButton extends HTMLElement {
           aria-label="${this.ariaLabel}"
           target="${this.target}"
           rel="${this.#isExternalURL(this.href) ? 'noreferrer' : ''}"
-        >
-          <slot></slot>
-        </a>
+        ></a>
       `
-    this.shadow.appendChild(div.children[0])
+    this.appendChild(div.children[0])
+    this.initialNodes.forEach(node => this.button?.appendChild(node))
   }
 
   get button () {
-    return this.shadow.querySelector('a,button')
+    return this.querySelector(this.buttonSelector)
   }
 }
