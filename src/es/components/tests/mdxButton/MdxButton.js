@@ -136,6 +136,13 @@ export default class MdxButton extends HTMLElement {
     if (name === 'as' && oldValue && oldValue !== newValue) {
       this.button?.remove()
       return this.renderHTML()
+    } else if (name === 'disabled') {
+      if (this.disabled) {
+        this.button?.setAttribute('disabled', '')
+      } else {
+        this.button?.removeAttribute('disabled')
+      }
+      return
     }
     this.button?.setAttribute(name, this[name.replace(/-(.{1})/, (match, p1) => p1.toUpperCase())])
   }
@@ -630,6 +637,7 @@ export default class MdxButton extends HTMLElement {
    */
   renderHTML () {
     const div = document.createElement('div')
+    console.log('changed', this.as, this);
     div.innerHTML = this.as === BUTTON_AS.button
       ? /* HTML */`
         <button part="button" class="button" type="${this.type}" ${this.disabled ? 'disabled' : ''}>
