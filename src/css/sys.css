@@ -2,10 +2,24 @@
     /* ordered according to src/css/base.css */
 
     /* border */
-    --border-width: var(--mdx-sys-border-width-md);
-    --border-radius: var(--mdx-sys-border-radius-none);
+    --border-width: var(--mdx-sys-border-width-default);
+    --border-radius: var(--mdx-sys-border-radius-default);
     --search-input-border-radius: var(--mdx-comp-button-primary-medium-border-radius-default);
     --search-input-border-radius-mobile: var(--mdx-comp-button-primary-small-border-radius-default);
+
+    --border-radius-none: var(--mdx-sys-border-radius-none);
+    --border-radius-sm: var(--mdx-sys-border-radius-sm);
+    --border-radius-default: var(--mdx-sys-border-radius-default);
+    --border-radius-md: var(--mdx-sys-border-radius-md);
+    --border-radius-lg: var(--mdx-sys-border-radius-lg);
+    --border-radius-xl: var(--mdx-sys-border-radius-xl);
+    --border-radius-xs: var(--mdx-sys-border-radius-xs);
+    --border-width-none: var(--mdx-sys-border-width-none);
+    --border-width-default: var(--mdx-sys-border-width-default);
+    --border-width-md: var(--mdx-sys-border-width-md);
+    --border-width-lg: var(--mdx-sys-border-width-lg);
+    --border-width-xl: var(--mdx-sys-border-width-xl);
+    --border-width-2xl: var(--mdx-sys-border-width-2xl);
     
     /* color */
 
@@ -319,5 +333,25 @@
     /* spacing */   
 
     /* spacing used of base.css */
-    
+
+    /* responsive spacing */
+    --spacing-flex-2xs: var(--mdx-sys-spacing-flex-2xs);
+    --spacing-flex-xs: var(--mdx-sys-spacing-flex-xs);
+    --spacing-flex-s: var(--mdx-sys-spacing-flex-s);
+    --spacing-flex-m: var(--mdx-sys-spacing-flex-m);
+    --spacing-flex-l: var(--mdx-sys-spacing-flex-l);
+    --spacing-flex-xl: var(--mdx-sys-spacing-flex-xl);
+    --spacing-flex-2xl: var(--mdx-sys-spacing-flex-2xl);
+    /* fixed spacing */
+    --spacing-fix-none: var(--mdx-sys-spacing-fix-none);
+    --spacing-fix-4xs: var(--mdx-sys-spacing-fix-4xs);
+    --spacing-fix-3xs: var(--mdx-sys-spacing-fix-3xs);
+    --spacing-fix-2xs: var(--mdx-sys-spacing-fix-2xs);
+    --spacing-fix-xs: var(--mdx-sys-spacing-fix-xs);
+    --spacing-fix-s: var(--mdx-sys-spacing-fix-s);
+    --spacing-fix-m: var(--mdx-sys-spacing-fix-m);
+    --spacing-fix-l: var(--mdx-sys-spacing-fix-l);
+    --spacing-fix-xl: var(--mdx-sys-spacing-fix-xl);
+    --spacing-fix-2xl: var(--mdx-sys-spacing-fix-2xl);
+    --spacing-fix-3xl: var(--mdx-sys-spacing-fix-3xl);
 }
