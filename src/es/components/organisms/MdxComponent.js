@@ -115,11 +115,18 @@ export default class MdxComponent extends Mutation() {
 
   /**
   * renders the css
+  * css fixes which may flow into the mdx component when mode false
   *
   * @return {Promise<void>}
   */
   renderCSS () {
-    this.css = /* css */''
+    this.css = /* css */`
+      :host input[type=radio], :host input[type=checkbox] {
+        width: auto;
+        height: auto;
+        padding: 0;
+      }
+    `
     return Promise.resolve()
   }
 
@@ -141,6 +148,59 @@ export default class MdxComponent extends Mutation() {
     // make it global to self so that other components can know when it has been loaded
     return this._loadDependency || (this._loadDependency = new Promise((resolve, reject) => {
       if (document.head.querySelector('#mdx') || this.hasMdx) return resolve(true)
+      if (this.getAttribute('mode') === 'false') {
+        // Workaround for ShadowDom
+        // Tried attachInternals (https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals), which requires "static formAssociated = true" within the MDX WC Class but failed to focus with Error: "An invalid form control with name='mdxCheckbox' is not focusable.", if going this route, everything would have to be handled specifically with internals.setValidity(), internals.checkValidity() and internals.reportValidity()
+        // This workaround does hijack the mdx custom element constructors and avoid the ShadowDom to be set, it also fixes the CSS :host selector
+        // Note: Referencing the input elements by slots has not worked
+        const parentNode = this
+        customElements.define = new Proxy(customElements.define, {
+          apply:
+          /**
+           * @param {(name: string, constructor: any, options: { extends: string})=>void} target
+           * @param {any} thisArg
+           * @param {[name: string, constructor: any, options: { extends: string}]} argArray
+           */
+          (target, thisArg, argArray) => {
+            let [name, constructor, options] = argArray
+            if (name.substring(0, 4) === 'mdx-') {
+              constructor = class extends constructor {
+                constructor(...args) {
+                  super(...args)
+                  this.fakeShadowRoot = document.createElement('div').attachShadow({ mode: 'open' })
+                  this.adoptStyleTimeoutId = null
+                  this.adoptedStyleSheetsSetterDidRun = false
+                }
+                // avoid shadow to be attached
+                attachShadow () {}
+                // for some reason this makes stencil to put the CSSStyleSheet to the document
+                get shadowRoot () { return Object.assign(this, this.fakeShadowRoot, { set adoptedStyleSheets (styleSheets) {} }) }
+                set adoptedStyleSheets (styleSheets) {
+                  if (this.adoptedStyleSheetsSetterDidRun) return
+                  // @ts-ignore
+                  clearTimeout(this.adoptStyleTimeoutId)
+                  this.adoptStyleTimeoutId = setTimeout(() => {
+                    // grab all styles, replace :host and append it to the component
+                    const cssText = Array.from(document?.adoptedStyleSheets?.splice(-1)?.[0]?.cssRules || []).reduce((acc, cssRule) => (acc += cssRule.cssText), '')
+                    const styleNode = document.createElement('style')
+                    parentNode.setCss(cssText, this.getAttribute('id') ? `#${this.getAttribute('id')}` : this.nodeName, false, false, styleNode, false)
+                    this.appendChild(styleNode)
+                    // grab all slots and replace it with its reference
+                    Array.from(this.querySelectorAll('slot')).forEach(slot => {
+                      let slotReference
+                      if ((slotReference = this.querySelector(`[slot=${slot.getAttribute('name')}]`))) slot.replaceWith(slotReference)
+                    })
+                    this.adoptedStyleSheetsSetterDidRun = true
+                  }, 1)
+                }
+                get adoptedStyleSheets () { return [] }
+              }
+            }
+            const result = target.apply(thisArg, [name, constructor, options])
+            return result
+          }
+        })
+      }
       const script = document.createElement('script')
       script.setAttribute('type', 'module')
       script.setAttribute('async', '')
