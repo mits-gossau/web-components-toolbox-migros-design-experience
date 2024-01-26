@@ -126,6 +126,13 @@ export default class MdxComponent extends Mutation() {
         height: auto;
         padding: 0;
       }
+      /* fix weird side effect from empty mdx styles */
+      .select-button__button {
+        font-size: 1em;
+        & > div {
+          line-height: 1.5rem;
+        }
+      }
     `
     return Promise.resolve()
   }
@@ -136,7 +143,14 @@ export default class MdxComponent extends Mutation() {
   * @return {Promise<void>}
   */
   renderHTML () {
-    return this.loadDependency()
+    return this.loadDependency().then(() => {
+      let template
+      if ((template = this.root.querySelector('template'))) {
+        const templateContent = template.content
+        template.remove()
+        this.html = templateContent
+      }
+    })
   }
 
   /**
@@ -181,23 +195,39 @@ export default class MdxComponent extends Mutation() {
                   clearTimeout(this.adoptStyleTimeoutId)
                   this.adoptStyleTimeoutId = setTimeout(() => {
                     // grab all styles, replace :host and append it to the component
-                    const cssText = Array.from(document?.adoptedStyleSheets?.splice(-1)?.[0]?.cssRules || []).reduce((acc, cssRule) => (acc += cssRule.cssText), '')
+                    // @ts-ignore
+                    if (!document.styleSheetMap) document.styleSheetMap = new Map()
+                    // @ts-ignore
+                    const index = document.styleSheetMap.get(name) !== undefined ? document.styleSheetMap.get(name) : document.styleSheetMap.size
+                    // @ts-ignore
+                    document.styleSheetMap.set(name, index)
+                    // @ts-ignore
+                    const cssText = Array.from(document?.adoptedStyleSheets?.[index]?.cssRules || []).reduce((acc, cssRule) => (acc += cssRule.cssText), '')
                     const styleNode = document.createElement('style')
-                    parentNode.setCss(cssText, this.getAttribute('id') ? `#${this.getAttribute('id')}` : this.nodeName, false, false, styleNode, false)
+                    parentNode.setCss(cssText, (this.getAttribute('id') ? `#${this.getAttribute('id')}` : name) + ':not([stencil-rocks])', false, false, styleNode, false)
                     this.appendChild(styleNode)
                     // grab all slots and replace it with its reference
-                    Array.from(this.querySelectorAll('slot')).forEach(slot => {
+                    Array.from(this.querySelectorAll('slot')).forEach((slot, i) => {
                       let slotReference
-                      if ((slotReference = this.querySelector(`[slot=${slot.getAttribute('name')}]`))) slot.replaceWith(slotReference)
+                      if ((slotReference = this.querySelector(`[slot=${slot.getAttribute('name')}]`))) {
+                        slot.replaceWith(slotReference)
+                      } else if (i === 0 && !slot.hasAttribute('name')) {
+                        slot.replaceWith(this.children[0])
+                      }
                     })
+                    // add id and name to input field
+                    let input
+                    if ((input = this.querySelector(`input[placeholder="${this.getAttribute('placeholder')}"]`))) {
+                      input.setAttribute('id', this.getAttribute('id'))
+                      input.setAttribute('name', this.getAttribute('name'))
+                    }
                     this.adoptedStyleSheetsSetterDidRun = true
-                  }, 1)
+                  }, 0)
                 }
                 get adoptedStyleSheets () { return [] }
               }
             }
-            const result = target.apply(thisArg, [name, constructor, options])
-            return result
+            return target.apply(thisArg, [name, constructor, options])
           }
         })
       }
