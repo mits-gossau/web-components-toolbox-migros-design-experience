@@ -55,7 +55,6 @@ export default class MdxComponent extends Mutation() {
       Array.from(this.attributes).forEach(attribute => {
         if (attribute.name && attribute.name.includes('-event-name') && attribute.name !== 'mutation-callback-event-name' && attribute.name !== 'listener-event-name') {
           const type = attribute.name.replace('-event-name', '')
-          console.log("request attach listener", attribute.value, type)
           const listener = event => this.dispatchEvent(new CustomEvent(attribute.value || `${this.tagName}-${type}-event`, {
             detail: {
               type,
