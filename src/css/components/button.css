@@ -80,4 +80,24 @@
     --button-tertiary-outline-width: var(--mdx-comp-keyboard-focus-border-width-default);
     --button-tertiary-padding-custom: var(--mdx-comp-button-tertiary-medium-padding-vertical-default) var(--mdx-comp-button-tertiary-medium-padding-horizontal-default);
     --button-tertiary-padding: var(--mdx-comp-button-tertiary-medium-padding-vertical-default) var(--mdx-comp-button-tertiary-medium-padding-horizontal-default);
+    --button-transparent-background-color-custom: transparent;
+    --button-transparent-background-color-disabled-custom: transparent;
+    --button-transparent-background-color-hover-custom: transparent;
+    --button-transparent-border-color-custom: var(--mdx-comp-button-tertiary-medium-border-color-default);
+    --button-transparent-border-radius: var(--mdx-comp-button-tertiary-medium-border-radius-default);
+    --button-transparent-border-width-custom: var(--mdx-comp-button-tertiary-medium-border-width-default);
+    --button-transparent-color-custom: var(--mdx-comp-button-tertiary-medium-color-default);
+    --button-transparent-color-disabled-custom: var(--mdx-comp-button-tertiary-medium-color-disabled);
+    --button-transparent-color-hover-custom: var(--mdx-comp-button-tertiary-medium-color-hover);
+    --button-transparent-font-family-custom: var(--mdx-comp-button-tertiary-medium-font-default-font, var(--mdx-comp-button-tertiary-medium-font-default-font-family));
+    --button-transparent-font-size: var(--mdx-comp-button-tertiary-medium-font-default-font-size);
+    --button-transparent-font-weight: var(--mdx-comp-button-tertiary-medium-font-default-font-weight);
+    --button-transparent-icon-left-margin: 0 var(--mdx-comp-button-tertiary-medium-gap-icon-text-default) 0 0;
+    --button-transparent-icon-right-margin: 0 0 0 var(--mdx-comp-button-tertiary-medium-gap-icon-text-default);
+    --button-transparent-line-height: 1.125em;
+    --button-transparent-outline-border-radius: var(--mdx-comp-keyboard-focus-border-radius-default);
+    --button-transparent-outline-color: var(--mdx-comp-keyboard-focus-color-default);
+    --button-transparent-outline-width: var(--mdx-comp-keyboard-focus-border-width-default);
+    --button-transparent-padding-custom: var(--mdx-comp-button-tertiary-medium-padding-vertical-default) var(--mdx-comp-button-tertiary-medium-padding-horizontal-default);
+    --button-transparent-padding: var(--mdx-comp-button-tertiary-medium-padding-vertical-default) var(--mdx-comp-button-tertiary-medium-padding-horizontal-default);
 }
