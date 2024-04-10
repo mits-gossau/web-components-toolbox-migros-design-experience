@@ -160,7 +160,7 @@ export default class Login extends Shadow() {
     if (this.mdxLoginButton.hasAttribute('is-logged-in')) this.mdxLoginButton.setAttribute('is-loggedin', this.mdxLoginButton.getAttribute('is-logged-in'))
     // stencil sucks and can't parse attribute objects, here it recommends script tags: https://stenciljs.com/docs/properties
     if (this.mdxLoginButton.hasAttribute('loginbuttonclick')) this.mdxLoginButton.loginButtonClick = eval(this.mdxLoginButton.getAttribute('loginbuttonclick'))
-    if (!this.mdxLoginAvatar) this.html = `<mdx-login-avatar ${all || (all = this.getAttributeString(this.getAttribute('all')))} ${this.getAttributeString(this.getAttribute('avatar'))}></mdx-login-avatar>`
+    if (!this.mdxLoginAvatar) this.html = `<mdx-login-avatar ${all || (all = this.getAttributeString(this.getAttribute('all')))} ${this.getProfileImageUrlFallback(this.getAttributeString(this.getAttribute('avatar')))}></mdx-login-avatar>`
     if (!this.mdxLoginFlyout) this.html = `<mdx-login-flyout ${all || this.getAttributeString(this.getAttribute('all'))} ${this.getAttributeString(this.getAttribute('flyout'))}></mdx-login-flyout>`
     // stencil sucks and can't parse attribute objects, here it recommends script tags: https://stenciljs.com/docs/properties
     if (this.mdxLoginFlyout.hasAttribute('menuitemgroup')) this.mdxLoginFlyout.menuItemGroup = JSON.parse(this.mdxLoginFlyout.getAttribute('menuitemgroup'))
@@ -182,6 +182,12 @@ export default class Login extends Shadow() {
   getAttributeString(attribute) {
     let settings
     return Object.keys((settings = Login.parseAttribute(attribute) || {})).reduce((acc, key) => `${acc} ${key}='${typeof settings[key] === 'object' ? JSON.stringify(settings[key]) : settings[key]}'`, '')
+  }
+
+  getProfileImageUrlFallback(attributesString) {
+    console.log('attributesString', attributesString);
+    if (!attributesString.includes('profile-image-url') && !attributesString.includes('user-initials')) attributesString += `profile-image-url='${this.importMetaUrl}../../web-components-toolbox/src/icons/mdx-main-packages-icons-dist-svg/packages/icons/dist/svg/User/Size_56x56_orange.svg'`
+    return attributesString
   }
 
   get mdxComponent () {
