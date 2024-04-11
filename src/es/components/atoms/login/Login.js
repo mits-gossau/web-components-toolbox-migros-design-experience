@@ -142,6 +142,14 @@ export default class Login extends Shadow() {
         right: -50%;
         top: 100%;
       }
+      @media screen and (max-width: _max-width_) {
+        :host([is-logged-in=false]) > mdx-component:has(> mdx-login-avatar) > mdx-login-button {
+          display: none;
+        }
+        :host([is-logged-in=false]) > mdx-component > mdx-login-avatar {
+          display: block;
+        }
+      }
     `
     return Promise.resolve()
   }
@@ -155,14 +163,19 @@ export default class Login extends Shadow() {
     if (!this.mdxComponent) this.html = '<mdx-component></mdx-component>'
     // write attributes
     let all
+    // Button
     if (!this.mdxLoginButton) this.html = `<mdx-login-button ${(all = this.getAttributeString(this.getAttribute('all')))} ${this.getAttributeString(this.getAttribute('button'))}></mdx-login-button>`
     // bug fix login-button listens to is-loggedin attribute instead of is-logged-in as the avatar does
     if (this.mdxLoginButton.hasAttribute('is-logged-in')) this.mdxLoginButton.setAttribute('is-loggedin', this.mdxLoginButton.getAttribute('is-logged-in'))
-    // stencil sucks and can't parse attribute objects, here it recommends script tags: https://stenciljs.com/docs/properties
+    // stencil s... and can't parse attribute objects, here it recommends script tags: https://stenciljs.com/docs/properties
     if (this.mdxLoginButton.hasAttribute('loginbuttonclick')) this.mdxLoginButton.loginButtonClick = eval(this.mdxLoginButton.getAttribute('loginbuttonclick'))
+    // Avatar
     if (!this.mdxLoginAvatar) this.html = `<mdx-login-avatar ${all || (all = this.getAttributeString(this.getAttribute('all')))} ${this.getProfileImageUrlFallback(this.getAttributeString(this.getAttribute('avatar')))}></mdx-login-avatar>`
+    // stencil s... and can't parse attribute objects, here it recommends script tags: https://stenciljs.com/docs/properties
+    if ((!this.mdxLoginAvatar.getAttribute('is-logged-in') || this.mdxLoginAvatar.getAttribute('is-logged-in') === 'false') && this.mdxLoginButton.hasAttribute('loginbuttonclick')) this.mdxLoginAvatar.onclick = eval(this.mdxLoginButton.getAttribute('loginbuttonclick'))
+    // Flyout
     if (!this.mdxLoginFlyout) this.html = `<mdx-login-flyout ${all || this.getAttributeString(this.getAttribute('all'))} ${this.getAttributeString(this.getAttribute('flyout'))}></mdx-login-flyout>`
-    // stencil sucks and can't parse attribute objects, here it recommends script tags: https://stenciljs.com/docs/properties
+    // stencil s... and can't parse attribute objects, here it recommends script tags: https://stenciljs.com/docs/properties
     if (this.mdxLoginFlyout.hasAttribute('menuitemgroup')) this.mdxLoginFlyout.menuItemGroup = JSON.parse(this.mdxLoginFlyout.getAttribute('menuitemgroup'))
     if (this.mdxLoginFlyout.hasAttribute('notificationlinks')) this.mdxLoginFlyout.notificationLinks = JSON.parse(this.mdxLoginFlyout.getAttribute('notificationlinks'))
     if (this.mdxLoginFlyout.hasAttribute('logout')) this.mdxLoginFlyout.logout = eval(this.mdxLoginFlyout.getAttribute('logout'))
