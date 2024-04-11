@@ -141,6 +141,7 @@ export default class Login extends Shadow() {
         position: absolute;
         right: -50%;
         top: 100%;
+        z-index: 9999;
       }
       @media screen and (max-width: _max-width_) {
         :host([is-logged-in=false]) > mdx-component:has(> mdx-login-avatar) > mdx-login-button {
