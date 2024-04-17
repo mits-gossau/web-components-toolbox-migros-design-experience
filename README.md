@@ -1,6 +1,9 @@
 # web-components-toolbox-migros-design-experience
 The web component toolbox for any CMS but particularly used for [Web Components + Umbraco === Mutobo](http://mutobo.ch/)
 
+## Updates
+replace all "*--light" selectors with :root on tokens! Especially ".klubschule--light" or ".migros--light" at "\node_modules\@migros\mdx-design-tokens\dist\css\03_component\brands\klubschule\light-rem.css" + "\node_modules\@migros\mdx-design-tokens\dist\css\03_component\brands\migros\light-rem.css" otherwise this class would have to be set on the html element within umbraco.
+
 ## MDX Sources
 - [https://web-components.cf-dev.migros.cloud/?path=/docs/migros-design-experience-mdx-introduction--docs](MDX Storybook)
 - [https://git.intern.migros.net/mdx/mdx/-/tree/main/packages/web-components](MDX Web Components)
