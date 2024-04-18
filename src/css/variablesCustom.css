@@ -12,7 +12,7 @@
 
 /** 
 * only import one mdx theme at a time for mapping it at sys.css and comp.css
-* replace .migros--light with :root
+* replace all "*--light" selectors with :root on tokens! Especially ".klubschule--light" or ".migros--light" at "\node_modules\@migros\mdx-design-tokens\dist\css\03_component\brands\klubschule\light-rem.css" + "\node_modules\@migros\mdx-design-tokens\dist\css\03_component\brands\migros\light-rem.css" otherwise this class would have to be set on the html element within umbraco.
 */
 @import "../../node_modules/@migros/mdx-design-tokens/dist/css/03_component/brands/migros/light-rem.css";
 @import "../../node_modules/@migros/mdx-design-tokens/dist/css/02_system/brands/migros/light-rem.css";
