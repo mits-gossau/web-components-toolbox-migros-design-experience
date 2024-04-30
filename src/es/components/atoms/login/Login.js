@@ -162,35 +162,45 @@ export default class Login extends Shadow() {
    */
   renderHTML () {
     if (!this.mdxComponent) this.html = '<mdx-component></mdx-component>'
-    // write attributes
-    let all
-    // Button
-    if (!this.mdxLoginButton) this.html = `<mdx-login-button ${(all = this.getAttributeString(this.getAttribute('all')))} ${this.getAttributeString(this.getAttribute('button'))}></mdx-login-button>`
-    // bug fix login-button listens to is-loggedin attribute instead of is-logged-in as the avatar does
-    if (this.mdxLoginButton.hasAttribute('is-logged-in')) this.mdxLoginButton.setAttribute('is-loggedin', this.mdxLoginButton.getAttribute('is-logged-in'))
-    // stencil s... and can't parse attribute objects, here it recommends script tags: https://stenciljs.com/docs/properties
-    if (this.mdxLoginButton.hasAttribute('loginbuttonclick')) this.mdxLoginButton.loginButtonClick = eval(this.mdxLoginButton.getAttribute('loginbuttonclick'))
-    // Avatar
-    if (!this.mdxLoginAvatar) this.html = `<mdx-login-avatar ${all || (all = this.getAttributeString(this.getAttribute('all')))} ${this.getProfileImageUrlFallback(this.getAttributeString(this.getAttribute('avatar')))}></mdx-login-avatar>`
-    // stencil s... and can't parse attribute objects, here it recommends script tags: https://stenciljs.com/docs/properties
-    if ((!this.mdxLoginAvatar.getAttribute('is-logged-in') || this.mdxLoginAvatar.getAttribute('is-logged-in') === 'false') && this.mdxLoginButton.hasAttribute('loginbuttonclick')) this.mdxLoginAvatar.onclick = eval(this.mdxLoginButton.getAttribute('loginbuttonclick'))
-    // Flyout
-    if (!this.mdxLoginFlyout) this.html = `<mdx-login-flyout ${all || this.getAttributeString(this.getAttribute('all'))} ${this.getAttributeString(this.getAttribute('flyout'))}></mdx-login-flyout>`
-    // stencil s... and can't parse attribute objects, here it recommends script tags: https://stenciljs.com/docs/properties
-    if (this.mdxLoginFlyout.hasAttribute('menuitemgroup')) this.mdxLoginFlyout.menuItemGroup = JSON.parse(this.mdxLoginFlyout.getAttribute('menuitemgroup'))
-    if (this.mdxLoginFlyout.hasAttribute('notificationlinks')) this.mdxLoginFlyout.notificationLinks = JSON.parse(this.mdxLoginFlyout.getAttribute('notificationlinks'))
-    if (this.mdxLoginFlyout.hasAttribute('logout')) this.mdxLoginFlyout.logout = eval(this.mdxLoginFlyout.getAttribute('logout'))
-    // put the components in order
-    if (!this.mdxComponent.contains(this.mdxLoginButton)) this.mdxComponent.appendChild(this.mdxLoginButton)
-    if (!this.mdxComponent.contains(this.mdxLoginAvatar)) this.mdxComponent.appendChild(this.mdxLoginAvatar)
-    if (!this.mdxComponent.contains(this.mdxLoginFlyout)) this.mdxComponent.appendChild(this.mdxLoginFlyout)
-    this.setAttribute('is-logged-in', this.root.querySelector('[is-logged-in=true]') ? 'true' : 'false')
     return this.fetchModules([
-      {
-        path: `${this.importMetaUrl}../../organisms/MdxComponent.js`,
-        name: 'mdx-component'
-      }
-    ])
+        {
+          path: `${this.importMetaUrl}../../organisms/MdxComponent.js`,
+          name: 'mdx-component'
+        }
+      ]).then(() => this.mdxComponent.loadDependency().then(() => {
+        // write attributes
+        let all
+        // Button
+        if (!this.mdxLoginButton) this.html = `<mdx-login-button ${(all = this.getAttributeString(this.getAttribute('all')))} ${this.getAttributeString(this.getAttribute('button'))}></mdx-login-button>`
+        // bug fix login-button listens to is-loggedin attribute instead of is-logged-in as the avatar does
+        if (this.mdxLoginButton.hasAttribute('is-logged-in')) this.mdxLoginButton.setAttribute('is-loggedin', this.mdxLoginButton.getAttribute('is-logged-in'))
+        // stencil s... and can't parse attribute objects, here it recommends script tags: https://stenciljs.com/docs/properties
+        if (this.mdxLoginButton.hasAttribute('loginbuttonclick')) this.mdxLoginButton.loginButtonClick = eval(this.mdxLoginButton.getAttribute('loginbuttonclick'))
+        // Avatar
+        if (!this.mdxLoginAvatar) this.html = `<mdx-login-avatar ${all || (all = this.getAttributeString(this.getAttribute('all')))} ${this.getProfileImageUrlFallback(this.getAttributeString(this.getAttribute('avatar')))}></mdx-login-avatar>`
+        // stencil s... and can't parse attribute objects, here it recommends script tags: https://stenciljs.com/docs/properties
+        if ((!this.mdxLoginAvatar.getAttribute('is-logged-in') || this.mdxLoginAvatar.getAttribute('is-logged-in') === 'false') && this.mdxLoginButton.hasAttribute('loginbuttonclick')) this.mdxLoginAvatar.onclick = eval(this.mdxLoginButton.getAttribute('loginbuttonclick'))
+        // Flyout
+        if (!this.mdxLoginFlyout) this.html = `<mdx-login-flyout ${all || this.getAttributeString(this.getAttribute('all'))} ${this.getAttributeString(this.getAttribute('flyout'))}></mdx-login-flyout>`
+        // stencil s... and can't parse attribute objects, here it recommends script tags: https://stenciljs.com/docs/properties
+        if (this.mdxLoginFlyout.hasAttribute('menuitemgroup')) this.mdxLoginFlyout.menuItemGroup = JSON.parse(this.mdxLoginFlyout.getAttribute('menuitemgroup'))
+        if (this.mdxLoginFlyout.hasAttribute('notificationlinks')) this.mdxLoginFlyout.notificationLinks = JSON.parse(this.mdxLoginFlyout.getAttribute('notificationlinks'))
+        if (this.mdxLoginFlyout.hasAttribute('logout')) {
+          this.mdxLoginFlyout.addEventListener('click', event => {
+            let mdxLoginFlyoutMenuItem
+            if((mdxLoginFlyoutMenuItem = Array.from(event.composedPath()).find(child => child.tagName === 'MDX-LOGIN-FLYOUT-MENU-ITEM')) && this.mdxLoginFlyout?.shadowRoot?.querySelector('.login-flyout > mdx-login-flyout-menu-item:last-of-type') === mdxLoginFlyoutMenuItem) {
+              if (typeof this.mdxLoginFlyout.logout !== 'function') this.mdxLoginFlyout.logout = eval(this.mdxLoginFlyout.getAttribute('logout'))
+              this.mdxLoginFlyout.logout()
+            }
+          })
+        }
+        // put the components in order
+        if (!this.mdxComponent.contains(this.mdxLoginButton)) this.mdxComponent.appendChild(this.mdxLoginButton)
+        if (!this.mdxComponent.contains(this.mdxLoginAvatar)) this.mdxComponent.appendChild(this.mdxLoginAvatar)
+        if (!this.mdxComponent.contains(this.mdxLoginFlyout)) this.mdxComponent.appendChild(this.mdxLoginFlyout)
+        this.setAttribute('is-logged-in', this.root.querySelector('[is-logged-in=true]') ? 'true' : 'false')
+      })
+    )
   }
 
   getAttributeString(attribute) {
@@ -199,7 +209,6 @@ export default class Login extends Shadow() {
   }
 
   getProfileImageUrlFallback(attributesString) {
-    console.log('attributesString', attributesString);
     if (!attributesString.includes('profile-image-url') && !attributesString.includes('user-initials')) attributesString += `profile-image-url='${this.importMetaUrl}../../web-components-toolbox/src/icons/mdx-main-packages-icons-dist-svg/packages/icons/dist/svg/User/Size_56x56_orange.svg'`
     return attributesString
   }

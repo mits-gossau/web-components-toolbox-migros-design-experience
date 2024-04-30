@@ -161,7 +161,10 @@ export default class MdxComponent extends Mutation() {
   loadDependency () {
     // make it global to self so that other components can know when it has been loaded
     return this._loadDependency || (this._loadDependency = new Promise((resolve, reject) => {
-      if (document.head.querySelector('#mdx') || this.hasMdx) return resolve(true)
+      if (document.head.querySelector('#mdx-loaded') || this.hasMdx) return resolve(true)
+      let mdxScriptNode = null
+      // @ts-ignore
+      if ((mdxScriptNode = document.head.querySelector('#mdx'))) return mdxScriptNode.onloadPromise?.then(() => resolve(true)).catch(error => reject(new Error('MdxComponent does not load into the global scope!'))) || resolve(true)
       if (this.getAttribute('mode') === 'false') {
         // Workaround for ShadowDom
         // Tried attachInternals (https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals), which requires "static formAssociated = true" within the MDX WC Class but failed to focus with Error: "An invalid form control with name='mdxCheckbox' is not focusable.", if going this route, everything would have to be handled specifically with internals.setValidity(), internals.checkValidity() and internals.reportValidity()
@@ -232,14 +235,24 @@ export default class MdxComponent extends Mutation() {
         })
       }
       const script = document.createElement('script')
+      // @ts-ignore
+      script.onloadPromise = new Promise((resolveOnloadPromise, rejectOnloadPromise) => {
+        // @ts-ignore
+        script.onload = () => {
+          if (this.hasMdx) {
+            script.setAttribute('id', 'mdx-loaded')
+            resolve(true)
+            resolveOnloadPromise(true)
+          } else {
+            reject(new Error('MdxComponent does not load into the global scope!'))
+            rejectOnloadPromise(new Error('MdxComponent does not load into the global scope!'))
+          }
+        }
+      })
       script.setAttribute('type', 'module')
       script.setAttribute('async', '')
       script.setAttribute('id', 'mdx')
       script.setAttribute('src', `${this.importMetaUrl}../../../../node_modules/@migros/mdx-web-components/dist/mdx-web-components/mdx-web-components.esm.js`)
-      // @ts-ignore
-      script.onload = () => this.hasMdx
-        ? resolve(true)
-        : reject(new Error('MdxComponent does not load into the global scope!'))
       document.head.appendChild(script)
     }))
   }
