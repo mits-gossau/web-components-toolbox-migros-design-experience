@@ -100,4 +100,28 @@
     --button-transparent-outline-width: var(--mdx-comp-keyboard-focus-border-width-default);
     --button-transparent-padding-custom: var(--mdx-comp-button-tertiary-medium-padding-vertical-default) var(--mdx-comp-button-tertiary-medium-padding-horizontal-default);
     --button-transparent-padding: var(--mdx-comp-button-tertiary-medium-padding-vertical-default) var(--mdx-comp-button-tertiary-medium-padding-horizontal-default);
+    
+    --button-search-background-color-custom: var(--mdx-comp-button-secondary-medium-background-color-default);
+    --button-search-background-color-disabled-custom: var(--mdx-comp-button-secondary-medium-background-color-disabled);
+    --button-search-background-color-hover-custom: var(--mdx-comp-button-secondary-medium-background-color-hover);
+    /* --button-search-border-color-custom: var(--mdx-comp-button-secondary-medium-border-color-default);
+    --button-search-border-color-hover-custom: var(--mdx-comp-button-secondary-medium-color-hover); */
+    --button-search-border-radius: var(--mdx-comp-button-secondary-medium-border-radius-default);
+    --button-search-border-width-custom: var(--mdx-comp-button-secondary-medium-border-width-default);
+    /* --button-search-color-custom: var(--mdx-comp-button-secondary-medium-color-default); */
+    --button-search-color-disabled-custom: var(--mdx-comp-button-secondary-medium-color-disabled);
+    /* --button-search-color-hover-custom: var(--mdx-comp-button-secondary-medium-color-hover); */
+    --button-search-font-family-custom: var(--mdx-comp-button-secondary-medium-font-default-font, var(--mdx-comp-button-secondary-medium-font-default-font-family));
+    --button-search-font-size: var(--mdx-comp-button-secondary-medium-font-default-font-size);
+    --button-search-font-weight: var(--mdx-comp-button-secondary-medium-font-default-font-weight);
+    --button-search-icon-left-margin: 0 var(--mdx-comp-button-secondary-medium-gap-icon-text-default) 0 0;
+    --button-search-icon-right-margin: 0 0 0 var(--mdx-comp-button-secondary-medium-gap-icon-text-default);
+    --button-search-line-height: 1.125em;
+    --button-search-outline-border-radius: var(--mdx-comp-keyboard-focus-border-radius-default);
+    --button-search-outline-color: var(--mdx-comp-keyboard-focus-color-default);
+    --button-search-outline-width: var(--mdx-comp-keyboard-focus-border-width-default);
+    --button-search-padding-custom: var(--mdx-comp-button-secondary-medium-padding-vertical-default) var(--mdx-comp-button-secondary-medium-padding-horizontal-default);
+    --button-search-padding: var(--mdx-comp-button-secondary-medium-padding-vertical-default) var(--mdx-comp-button-secondary-medium-padding-horizontal-default);
+    --button-search-icon-search-color-custom: var(--mdx-base-color-klubschule-blue-600);
+    --button-search-icon-search-color-hover-custom: var(--mdx-base-color-klubschule-blue-600);
 }
