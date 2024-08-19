@@ -101,11 +101,11 @@
     --button-transparent-padding-custom: var(--mdx-comp-button-tertiary-medium-padding-vertical-default) var(--mdx-comp-button-tertiary-medium-padding-horizontal-default);
     --button-transparent-padding: var(--mdx-comp-button-tertiary-medium-padding-vertical-default) var(--mdx-comp-button-tertiary-medium-padding-horizontal-default);
     
-    --button-search-background-color-custom: var(--mdx-comp-button-secondary-medium-background-color-default);
+    /* --button-search-background-color-custom: var(--mdx-comp-button-secondary-medium-background-color-default); */
     --button-search-background-color-disabled-custom: var(--mdx-comp-button-secondary-medium-background-color-disabled);
-    --button-search-background-color-hover-custom: var(--mdx-comp-button-secondary-medium-background-color-hover);
-    /* --button-search-border-color-custom: var(--mdx-comp-button-secondary-medium-border-color-default);
-    --button-search-border-color-hover-custom: var(--mdx-comp-button-secondary-medium-color-hover); */
+    /* --button-search-background-color-hover-custom: var(--mdx-comp-button-secondary-medium-background-color-hover); */
+    /* --button-search-border-color-custom: var(--mdx-comp-button-secondary-medium-border-color-default); */
+    /* --button-search-border-color-hover-custom: var(--mdx-comp-button-secondary-medium-color-hover); */
     --button-search-border-radius: var(--mdx-comp-button-secondary-medium-border-radius-default);
     --button-search-border-width-custom: var(--mdx-comp-button-secondary-medium-border-width-default);
     /* --button-search-color-custom: var(--mdx-comp-button-secondary-medium-color-default); */
