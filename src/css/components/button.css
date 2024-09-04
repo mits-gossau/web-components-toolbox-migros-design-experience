@@ -124,4 +124,5 @@
     --button-search-padding: var(--mdx-comp-button-secondary-medium-padding-vertical-default) var(--mdx-comp-button-secondary-medium-padding-horizontal-default);
     --button-search-icon-search-color-custom: var(--mdx-base-color-klubschule-blue-600);
     --button-search-icon-search-color-hover-custom: var(--mdx-base-color-klubschule-blue-600);
+    --button-search-height: var(--button-primary-height, 3.125rem); /* mdx token missing */
 }
