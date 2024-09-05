@@ -126,3 +126,9 @@
     --button-search-icon-search-color-hover-custom: var(--mdx-base-color-klubschule-blue-600);
     --button-search-height: var(--button-primary-height, 3.125rem); /* mdx token missing */
 }
+
+@media only screen and (max-width: 767px) {
+    :root {
+        --button-search-height: var(--button-primary-height, 2.5rem); /* mdx token missing */
+    }
+}
