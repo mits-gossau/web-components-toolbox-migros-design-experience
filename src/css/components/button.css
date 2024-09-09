@@ -129,6 +129,6 @@
 
 @media only screen and (max-width: 767px) {
     :root {
-        --button-search-height: var(--button-primary-height, 2.5rem); /* mdx token missing */
+        --button-search-height: var(--button-primary-height-mobile, var(--button-primary-height, 2.5rem)); /* mdx token missing */
     }
 }
