@@ -144,10 +144,10 @@ export default class Login extends Shadow() {
         z-index: 9999;
       }
       @media screen and (max-width: _max-width_) {
-        :host([is-logged-in=false]) > mdx-component:has(> mdx-login-avatar) > mdx-login-button {
+        :host([is-logged-in=false]):not([keep-desktop-variant]) > mdx-component:has(> mdx-login-avatar) > mdx-login-button {
           display: none;
         }
-        :host([is-logged-in=false]) > mdx-component > mdx-login-avatar {
+        :host([is-logged-in=false]):not([keep-desktop-variant]) > mdx-component > mdx-login-avatar {
           display: block;
         }
       }
