@@ -214,7 +214,7 @@
       url: 'organisms/MdxComponent.js'
     },
     {
-      selector: 'mdx-login',
+      selector: 'wct-mdx-login',
       url: 'atoms/login/Login.js'
     },
     // mdx-test-component is for testing purpose only!
